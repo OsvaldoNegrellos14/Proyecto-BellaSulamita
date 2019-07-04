@@ -1,0 +1,47 @@
+/*Panel*/
+header{
+    text-align: center;
+    font-size: 60px;
+}
+
+.container{
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.nav-link[data-toggle].collapsed:after {
+    content: "▾";
+}
+.nav-link[data-toggle]:not(.collapsed):after {
+    content: "▴";
+}
+
+/*/Panel*/
+
+/*productTable*/
+
+table{
+    margin-top: 20px;
+}
+
+table img{
+    width: 150px;
+    height: 150px;
+}
+
+/*/productTable*/
+
+a{
+    color: white !important;
+    text-decoration: none;
+}
+
+/*Index*/
+
+#login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*/Index*/
