@@ -1,4 +1,3 @@
-/*Panel*/
 header{
     text-align: center;
     font-size: 60px;
@@ -16,9 +15,9 @@ header{
     content: "▴";
 }
 
-/*/Panel*/
-
-/*productTable*/
+#panel a{
+    font-size: 25px;
+}
 
 table{
     margin-top: 20px;
@@ -29,19 +28,14 @@ table img{
     height: 150px;
 }
 
-/*/productTable*/
-
 a{
     color: white !important;
     text-decoration: none;
 }
 
-/*Index*/
 
 #login{
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
-/*/Index*/

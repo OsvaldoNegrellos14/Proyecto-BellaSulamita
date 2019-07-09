@@ -32,11 +32,11 @@ if(isset($_POST["nombre"]) && isset($_POST["telefono"]) && isset($_POST["asunto"
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.php">Bella Sulamita<span class="sr-only">(current)</span></a>
+                        <a class="navbar-brand" href="index.php">Bella Sulamita</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Novedades
+                            Categorias
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="products.php">Pantalones</a>
@@ -46,7 +46,7 @@ if(isset($_POST["nombre"]) && isset($_POST["telefono"]) && isset($_POST["asunto"
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="primavera.php">Primavera - Verano</a>
+                         <a class="nav-link" href="products.php">Nuestros Productos<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="ubicación.php">Ubicación</a>

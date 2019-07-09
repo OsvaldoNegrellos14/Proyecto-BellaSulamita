@@ -48,7 +48,7 @@ class CSlider {
         $slider= $this->modelo->consultarSliders();
         $acu='<div class="carousel-item active">';
         foreach ($slider as $slid){
-            $acu .= '   <img style="height:970px"src="'. $slid["imagen"].'" class="img-slider d-block w-100" alt="...">
+            $acu .= '   <img style=width="100%"; src="'. $slid["imagen"].'" class="img-slider d-block w-100" >
                         <div class="carousel-caption d-none d-md-block">
                             <h5>'. $slid["titulo"] .'</h5>
                             <p>'. $slid["informacion"] .'</p>

@@ -3,12 +3,12 @@ include_once '../backend/modelo/BD.php';
 include_once '../backend/modelo/MAdmin.php';
 include_once '../backend/controlador/CAdmin.php';
 session_start();
-$admin= new CAdmin();
-if(isset($_POST["usuario"]) && isset($_POST["password"])){
+$admin = new CAdmin();
+if (isset($_POST["usuario"]) && isset($_POST["password"])) {
     $admin->autentificar($_POST["usuario"], $_POST["password"]);
 }
 
-if(isset($_SESSION["autentificado"])){
+if (isset($_SESSION["autentificado"])) {
     header("Location: panel.php");
 }
 ?>
@@ -36,22 +36,23 @@ if(isset($_SESSION["autentificado"])){
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="index.php">Bella Sulamita</a>
-            
+
         </nav>
 
-        
+
         <div class="limiter">
             <div class="container-login100">
                 <div class="wrap-login100">
-                    <form method="POST" class="login100-form validate-form">
+                    <form id="formLogin" method="POST" class="login100-form validate-form">
                         <span class="login100-form-title p-b-26">
-                            
+
                             Bienvenido
                         </span>
-                        
+
 
                         <div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
                             <input class="input100" type="text" name="usuario" placeholder="Usuario">
+                            <div class="invalid-feedback">Oops, you missed this one.</div>
                             <!--<div class="col-4"><input name="nombre" type="text" placeholder="Nombre"></div>
                             <span class="focus-input100" data-placeholder="User"></span>-->
                         </div>
@@ -61,13 +62,14 @@ if(isset($_SESSION["autentificado"])){
 
                             </span>
                             <input class="input100" type="password" name="password" placeholder="Contraseña">
+                            <div class="invalid-feedback">Enter your password too!</div>
                             <!--<span class="focus-input100" data-placeholder="Password"></span>-->
                         </div>
-
+                        <p hidden="" style="color: red; font-size: 15px;">Error de autentificación, Favor de intentar de nuevo</p>
                         <div class="container-login100-form-btn">
                             <div class="wrap-login100-form-btn">
                                 <div class="login100-form-bgbtn"></div>
-                                <button type="submit" class="login100-form-btn">
+                                <button id="btnLogin" type="submit" class="login100-form-btn">
                                     Entrar
                                 </button>
                             </div>
@@ -92,7 +94,7 @@ if(isset($_SESSION["autentificado"])){
         </section>
         -->
 
-       
+
         <footer>
             <div class="container">
                 <div class="row">
@@ -108,7 +110,20 @@ if(isset($_SESSION["autentificado"])){
             </div>
         </footer>
 
+        <script>
+            $("#btnLogin").click(function (event) {
 
+                //Fetch form to apply custom Bootstrap validation
+                var form = $("#formLogin")
+
+                if (form[0].checkValidity() === false) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+
+                form.addClass('was-validated');
+            });
+        </script>
         <!-- Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

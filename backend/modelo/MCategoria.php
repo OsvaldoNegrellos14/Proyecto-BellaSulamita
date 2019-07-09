@@ -2,10 +2,11 @@
 
 class MCategoria extends BD {
     
-    public function agregarCategoria($categoria){
+    public function agregarCategoria($categoria, $imagen){
         try {
-            $stmt = $this->conn->prepare("insert into categoria(categoria) values (:categoria)");
+            $stmt = $this->conn->prepare("insert into categoria(categoria, imagen) values (:categoria, :imagen)");
             $stmt->bindParam(':categoria', $categoria);
+            $stmt->bindParam(':imagen', $imagen);
             return $stmt->execute();
            
         } catch (PDOException $e) {
@@ -37,12 +38,24 @@ class MCategoria extends BD {
             echo "Error: " . $e->getMessage();
         }
     }
-
-    public function actualizarCategoria($id, $categoria){
+    
+    public function consultarCategoriaUnico(){
         try {
-            $stmt = $this->conn->prepare("UPDATE categoria set categoria=:categoria where id=:id");
+            $stmt = $this->conn->prepare("SELECT * FROM categoria");
+            $stmt->execute();
+            return $stmt->fetchAll();
+           
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+    public function actualizarCategoria($id, $categoria, $imagen){
+        try {
+            $stmt = $this->conn->prepare("UPDATE categoria set categoria=:categoria, imagen=:imagen where id=:id");
             $stmt->bindParam(':id', $id);
             $stmt->bindParam(':categoria', $categoria);
+            $stmt->bindParam(':imagen', $imagen);
             return $stmt->execute();
            
         } catch (PDOException $e) {

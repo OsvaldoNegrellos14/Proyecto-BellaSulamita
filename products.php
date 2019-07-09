@@ -1,3 +1,12 @@
+<?php 
+include_once './backend/modelo/BD.php';
+include_once './backend/controlador/CCategoria.php';
+include_once './backend/modelo/MCategoria.php';
+include_once './backend/controlador/CProducto.php';
+include_once './backend/modelo/MProducto.php';
+$categoria = new CCategoria();
+$producto = new CProducto();
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,17 +31,14 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Novedades
+                            Categorias
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="products.php">Pantalones</a>
-                            <a class="dropdown-item" href="products.php">Blusas</a>
-                            <a class="dropdown-item" href="products.php">Vestidos</a>
-                            <a class="dropdown-item" href="products.php">Camisas</a>
+                            <?php echo $categoria->mostrarTodasCategorias()?>
                         </div>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="primavera.php">Primavera - Verano<span class="sr-only">(current)</span></a>
+                         <a class="nav-link" href="products.php">Nuestros Productos<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="ubicación.php">Ubicación</a>
@@ -46,129 +52,14 @@
         </nav>
 
         <div class="mt-5">
-            <h1>Tendencia</h1>
+            <h1>PRODUCTOS DISPONIBLES</h1>
         </div>
         <div class="album mt-5">
             <div class="container">
                 <div class="row">
-                    <svg class="bd-placeholder-img card-img-top" >
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="https://picsum.photos/250/450?random=1" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="d-flex justify-content-center align-items-center">
-                                    <div class="btn-group">
-                                        <a href="product.php" class="btn btn-primary my-2">Ver Más</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="https://picsum.photos/250/450?random=2" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="d-flex justify-content-center align-items-center">
-                                    <div class="btn-group">
-                                        <a href="product.php" class="btn btn-primary my-2">Ver Más</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="https://picsum.photos/250/450?random=3" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="d-flex justify-content-center align-items-center">
-                                    <div class="btn-group">
-                                        <a href="product.php" class="btn btn-primary my-2">Ver Más</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="https://picsum.photos/250/450?random=4" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="d-flex justify-content-center align-items-center">
-                                    <div class="btn-group">
-                                        <a href="product.php" class="btn btn-primary my-2">Ver Más</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="https://picsum.photos/250/450?random=5" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="d-flex justify-content-center align-items-center">
-                                    <div class="btn-group">
-                                        <a href="product.php" class="btn btn-primary my-2">Ver Más</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="https://picsum.photos/250/450?random=6" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="d-flex justify-content-center align-items-center">
-                                    <div class="btn-group">
-                                        <a href="product.php" class="btn btn-primary my-2">Ver Más</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="https://picsum.photos/250/450?random=7" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="d-flex justify-content-center align-items-center">
-                                    <div class="btn-group">
-                                        <a href="product.php" class="btn btn-primary my-2">Ver Más</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="https://picsum.photos/250/450?random=8" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="d-flex justify-content-center align-items-center">
-                                    <div class="btn-group">
-                                        <a href="product.php" class="btn btn-primary my-2">Ver Más</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="https://picsum.photos/250/450?random=9" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="d-flex justify-content-center align-items-center">
-                                    <div class="btn-group">
-                                        <a href="product.php" class="btn btn-primary my-2">Ver Más</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
+                    <?php echo $producto->mostrarTodos()?>
+                    
                 </div>
             </div>
         </div>

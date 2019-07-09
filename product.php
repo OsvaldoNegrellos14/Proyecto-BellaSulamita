@@ -1,7 +1,18 @@
+<?php
+include_once './backend/modelo/BD.php';
+include_once './backend/controlador/CProducto.php';
+include_once './backend/modelo/MProducto.php';
+include_once './backend/controlador/CCategoria.php';
+include_once './backend/modelo/MCategoria.php';
+$producto = new CProducto();
+$categoria = new CCategoria();
+$ide = $_GET["id"];
+$produ = $producto->mostrarProducto($ide);
+?>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Producto</title>
+        <title><?php echo $produ["nombre"]?></title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap CSS -->
@@ -22,17 +33,14 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Novedades
+                            Categorias
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="products.php">Pantalones</a>
-                            <a class="dropdown-item" href="products.php">Blusas</a>
-                            <a class="dropdown-item" href="products.php">Vestidos</a>
-                            <a class="dropdown-item" href="products.php">Camisas</a>
+                            <?php echo $categoria->mostrarTodasCategorias() ?>
                         </div>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="primavera.php">Primavera - Verano<span class="sr-only">(current)</span></a>
+                         <a class="nav-link" href="products.php">Nuestros Productos<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="ubicación.php">Ubicación</a>
@@ -43,30 +51,28 @@
                 </ul>
             </div>
         </nav>
-        
-       
-        
+
+
+
 
         <div class="container">
-            <h1 class="jumbotron-heading">Album example</h1>
-            <br>
+            <h1 class="jumbotron-heading"><?php echo $produ["nombre"] ?></h1>
             <div class="row">
                 <div class="col-6 mt-5">
-                    <img src="https://picsum.photos/1200/850?random=1" class="d-block w-100" alt="...">
+                    <img src="<?php echo $produ["imagen"] ?>" class="d-block w-100">
                 </div>
                 <div class="col-6 mt-5">
-                    
-                    <h3 class="text-justify">COLOR:</h3>
+
+                    <h3 class="text-justify">COLOR:</h3><p><?php echo $produ["color"] ?></p>
                     <br>
-                    <h3 class="text-justify">TALLA:</h3>
+                    <h3 class="text-justify">TALLA:</h3><p><?php echo $produ["talla"] ?></p>
                     <br>
-                    <h3 class="text-justify">MARCA:</h3>
+                    <h3 class="text-justify">MARCA:</h3><p><?php echo $produ["marca"] ?></p>
+                    <br>
+                    <h3 class="text-justify">MARCA:</h3><p>$<?php echo $produ["precio"] ?>.99</p>
                     <br>
                     <h3 class="text-justify">DESCRIPCIÓN:</h3>
-                    <p class="text-justify">Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit
-                        amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res 
-                        quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius 
-                        Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum.</p>
+                    <p class="text-justify"><?php echo $produ["description"] ?></p>
                 </div>
             </div>
         </div>

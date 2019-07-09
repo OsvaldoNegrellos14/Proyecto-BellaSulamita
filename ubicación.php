@@ -1,3 +1,9 @@
+<?php 
+include_once './backend/modelo/BD.php';
+include_once './backend/controlador/CCategoria.php';
+include_once './backend/modelo/MCategoria.php';
+$categoria = new CCategoria();
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,17 +28,14 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Novedades
+                            Categorias
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="products.php">Pantalones</a>
-                            <a class="dropdown-item" href="products.php">Blusas</a>
-                            <a class="dropdown-item" href="products.php">Vestidos</a>
-                            <a class="dropdown-item" href="products.php">Camisas</a>
+                            <?php echo $categoria->mostrarTodasCategorias()?>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="primavera.php">Primavera - Verano<span class="sr-only">(current)</span></a>
+                         <a class="nav-link" href="products.php">Nuestros Productos<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="ubicación.php">Ubicación</a>

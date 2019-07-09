@@ -43,6 +43,20 @@ class MProducto extends BD {
             echo "Error: " . $e->getMessage();
         }
     }
+    
+    public function consultarProductosId($id){
+        try {
+            $stmt = $this->conn->prepare("SELECT * FROM productos where id=:id");
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+            foreach ($stmt->fetchAll() as $producto) {
+                return $producto;
+            }
+            return null;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
 
     public function actualizarProducto($id, $imagen, $nombre, $description, $precio, $marca, $color, $talla){
         try {

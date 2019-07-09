@@ -2,7 +2,10 @@
 include_once './backend/modelo/BD.php';
 include_once './backend/controlador/CSlider.php';
 include_once './backend/modelo/MSlider.php';
-$slider = new CSlider()
+include_once './backend/controlador/CCategoria.php';
+include_once './backend/modelo/MCategoria.php';
+$slider = new CSlider();
+$categoria = new CCategoria();
 ?>
 <!DOCTYPE html>
 <html>
@@ -29,17 +32,14 @@ $slider = new CSlider()
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Novedades
+                            Categorias
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="products.php">Pantalones</a>
-                            <a class="dropdown-item" href="products.php">Blusas</a>
-                            <a class="dropdown-item" href="products.php">Vestidos</a>
-                            <a class="dropdown-item" href="products.php">Camisas</a>
+                            <?php echo $categoria->mostrarTodasCategorias()?>
                         </div>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="primavera.php">Primavera - Verano<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="products.php">Nuestros Productos<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="ubicación.php">Ubicación</a>
@@ -91,81 +91,14 @@ $slider = new CSlider()
 
 
         <section>
-            <div class="container-fluid px-5px py-5">
-                <div class="row mx-0">
-                    <div class="col-md-6 mb-10px px-5px">
-                        <div class="card border-0 text-white text-center">
-                            <img src="https://picsum.photos/1000/667?random=9" alt="Card image" class="card-img">
-                            <div class="card-img-overlay d-flex align-items-center">
-                                <div class="w-100 py-3">
-                                    <h2 class="display-3 font-weight-bold mb-4">Tendencia</h2>
-                                    <a href="products.php" class="btn btn-light">Ver Más</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-10px px-5px">
-                        <div class="card border-0 text-white text-center">
-                            <img src="https://picsum.photos/1000/667?random=17" alt="Card image" class="card-img">
-                            <div class="card-img-overlay d-flex align-items-center">
-                                <div class="w-100 py-3">
-                                    <h2 class="display-3 font-weight-bold mb-4">Primavera - Verano</h2>
-                                    <a href="products.php" class="btn btn-light">Ver Más</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div
-
-                <!--
-                  COLUMNAS DE 4
-                -->
-
-                <div class="row mx-0 py-5">
-                    <div class="col-lg-4 mb-10px px-5px">
-                        <div class="card border-0 text-white text-center">
-                            <img src="https://picsum.photos/1800/1200?random=21" alt="Card image" class="card-img">
-                            <div class="card-img-overlay d-flex align-items-center">
-                                <div class="w-100">
-                                    <h2 class="display-4 mb-4">Jackets</h2>
-                                    <a href="products.html" class="btn btn-link text-white">
-                                        Comprar
-                                        <i class="fa fa-arrow-right ml-2"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mb-10px px-5px">
-                        <div class="card border-0 text-white text-center">
-                            <img src="https://picsum.photos/1800/1200?random=25" alt="Card image" class="card-img">
-                            <div class="card-img-overlay d-flex align-items-center">
-                                <div class="w-100">
-                                    <h2 class="display-4 mb-4">Vestidos</h2>
-                                    <a href="products.html" class="btn btn-link text-white">
-                                        Comprar
-                                        <i class="fa fa-arrow-right ml-2"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mb-10px px-5px">
-                        <div class="card border-0 text-white text-center">
-                            <img src="https://picsum.photos/1800/1200?random=30" alt="Card image" class="card-img">
-                            <div class="card-img-overlay d-flex align-items-center">
-                                <div class="w-100">
-                                    <h2 class="display-4 mb-4">Pantalones</h2>
-                                    <a href="products.html" class="btn btn-link text-white">
-                                        Comprar
-                                        <i class="fa fa-arrow-right ml-2"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+            <div class="container">
+                <div class="container-fluid px-5px py-5">
+                    <div class="row mx-0">
+                        <?php echo $categoria->mostrarCategoriasPrincipal() ?>
                     </div>
                 </div>
             </div>
+            
         </section>
 
 

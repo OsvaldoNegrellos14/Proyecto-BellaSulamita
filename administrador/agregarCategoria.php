@@ -7,8 +7,8 @@ session_start();
 if (!isset($_SESSION["autentificado"])) {
     header("Location: index.php");
 }
-if (isset($_POST["categoria"])) {
-    $categoria->subirNuevaCategoria($_POST["categoria"]);
+if (isset($_POST["categoria"]) && isset($_POST["imagen"])) {
+    $categoria->subirNuevaCategoria($_POST["categoria"], $_FILES["imagen"]);
     header("Location: tablaCategoria.php");
 }
 ?>
@@ -53,36 +53,35 @@ if (isset($_POST["categoria"])) {
         <div class="container-fluid">
             <div class="row">
                 <div class="col-2 collapse d-md-flex bg-dark pt-2 min-vh-100" id="sidebar">
-                    <ul class="nav flex-column flex-nowrap">
-                        <li class="nav-item">
+                    <div id="panel">
+                        <ul class="nav flex-column flex-nowrap">
+                            <li class="nav-item">
+                                <a href="panel.php"><i class="fa fa-dashboard" aria-hidden="true"></i> Inicio</a><br><br>
+                                <a href="#submenu1"><i class="fa fa-plus" aria-hidden="true"></i> Agregar </a>
+                                <div id="submenu1" aria-expanded="false">
+                                    <ul class="flex-column pl-2 nav">
+                                        <li class="nav-item">
+                                            <a class="nav-link py-1" href="agregarProducto.php">Producto</a>
+                                            <a class="nav-link py-1" href="agregarSlider.php">Slider</a>
+                                            <a class="nav-link py-1" href="agregarCategoria.php">Categoria</a>
+                                        </li>
+                                    </ul>
+                                </div><br>
 
-                            <a href="#submenu1"><i class="fa fa-plus" aria-hidden="true"></i>  Agregar </a>
-                            <div id="submenu1" aria-expanded="false">
-                                <ul class="flex-column pl-2 nav">
-                                    <li class="nav-item">
-                                        <a class="nav-link py-1" href="agregarProducto.php">Producto</a>
-                                        <a class="nav-link py-1" href="agregarBanner.php">Banner</a>
-                                        <a class="nav-link py-1" href="agregarSlider.php">Slider</a>
-                                        <a class="nav-link py-1" href="agregarCategoria.php">Categoria</a>
-                                    </li>
-                                </ul>
-                            </div><br>
+                                <a href="#submenu2"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Modificar</a>
+                                <div id="submenu2" aria-expanded="false">
+                                    <ul class="flex-column pl-2 nav">
+                                        <li class="nav-item">
+                                            <a class="nav-link py-1" href="tablaProducto.php"> Producto</a>
+                                            <a class="nav-link py-1" href="tablaSlider.php"> Slider</a>
+                                            <a class="nav-link py-1" href="tablaCategoria.php"> Categoria</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
 
-                            <a href="#submenu2"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Modificar</a>
-                            <div id="submenu2" aria-expanded="false">
-                                <ul class="flex-column pl-2 nav">
-                                    <li class="nav-item">
-                                        <a class="nav-link py-1" href="tablaProducto.php">Producto</a>
-                                        <a class="nav-link py-1" href="tablaBanner.php">Banner</a>
-                                        <a class="nav-link py-1" href="tablaSlider.php">Slider</a>
-                                        <a class="nav-link py-1" href="tablaCategoria.php">Categoria</a>
-                                    </li>
-                                </ul>
-                            </div>
-
-
-                        </li>
-                    </ul>
                 </div>
                 <div class="col pt-2">
 
@@ -94,6 +93,7 @@ if (isset($_POST["categoria"])) {
                                 <input type="text" require name="categoria" class="form-control" aria-label="Sizing example input"
                                        aria-describedby="inputGroup-sizing-default" placeholder="Nombre de la categoria">
                             </div>
+                            <input type="file" name="imagen" accept="image/*">
                             <button type="submit" class="btn btn-outline-primary">Guardar</button>
                         </form>
                     </div>
