@@ -37,7 +37,6 @@ if (!isset($_SESSION["autentificado"])) {
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
-                    <a class="nav-link" href="../">Regresar. </a>
                     <a href="salir.php"><i class="fa fa-power-off"> </i> </a>
                 </form>
             </div>

@@ -1,11 +1,15 @@
-<?php 
+<?php
 include_once './backend/modelo/BD.php';
 include_once './backend/controlador/CSlider.php';
 include_once './backend/modelo/MSlider.php';
+include_once './backend/controlador/CProducto.php';
+include_once './backend/modelo/MProducto.php';
 include_once './backend/controlador/CCategoria.php';
 include_once './backend/modelo/MCategoria.php';
-$slider = new CSlider();
+$imagenes = new MSlider();
+$images = $imagenes->consultarSliders();
 $categoria = new CCategoria();
+$producto = new CProducto();
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,14 +20,18 @@ $categoria = new CCategoria();
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
         <link rel="stylesheet" href="style/css.css"/>
         <link rel="stylesheet" href="style/font-awesome.min.css">
     </head>
     <body>
+        <div id="contenedor_carga">
+           <div class="loader"></div> 
+        </div>
+        
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="index.php">Bella Sulamita</a>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
+            <a class="navbar-brand" href="index.php" id="principal">Bella Sulamita</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -35,14 +43,11 @@ $categoria = new CCategoria();
                             Categorias
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <?php echo $categoria->mostrarTodasCategorias()?>
+                            <?php echo $categoria->mostrarTodasCategorias() ?>
                         </div>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="products.php">Nuestros Productos<span class="sr-only">(current)</span></a>
-                    </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="ubicación.php">Ubicación</a>
+                        <a class="nav-link" href="products.php">Nuestros Productos<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contacto.php">Contacto</a>
@@ -51,203 +56,124 @@ $categoria = new CCategoria();
             </div>
         </nav>
 
-        <!--
-        ACTIVAR SI SE QUIERE CAMBIAR SLIDER
-        
-        <section class="home-full-slider-wrapper mb-10px">
-            <div class="owl-carousel owl-theme owl-dots-modern home-full-slider owl-loaded owl-drag">
-                <div class="owl-stage-outer">
-                    <div class="owl-stage" style="">
-                        
-                    </div>
-                </div>
-            </div>
-        </section>
-        -->
-
-        <div class="bd-example">
+        <div class="bd-example contenido">
+            <?php if(count($images)>0):?>
             <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                    <?php $cnt=0; foreach($images as $img):?>
+                    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="<?php if($cnt==0){ echo 'active'; }?>"></li>
+                    <?php $cnt++; endforeach; ?>
                 </ol>
+                
                 <div class="carousel-inner">
-                    
-                    <?php echo $slider->mostrarSliderPrincipal()?>
+
+                    <?php $cnt = 0;foreach ($images as $img): ?>
+                        <div class="carousel-item <?php if($cnt==0){ echo 'active'; }?>">
+                            <img style="width: 100%" src="<?php echo $img["imagen"] ?>" class="img-slider d-block w-100">
+                            <div class="carousel-caption d-none d-md-block" style="background-color: black; opacity: 0.3">
+                                <h5><?php echo $img["titulo"] ?></h5>
+                                <p><?php echo $img["informacion"] ?></p>
+                            </div>
+                        </div>
+                    <?php $cnt++; endforeach; ?>
                 </div>
+                
+                
                 <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
+                    <div id="indicador">
+                        <i class="fa fa-angle-left"></i>
+                    </div>
+                    
                 </a>
                 <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
+                    <div id="indicador" class="">
+                        <i class="fa fa-angle-right"></i>
+                    </div>
                 </a>
+                
+                <?php else:?>
+                <h4 class="alert alert-warning">No hay imagenes</h4>
+                <?php endif; ?>
             </div>
         </div>
-
-
-
 
         <section>
-            <div class="container">
-                <div class="container-fluid px-5px py-5">
-                    <div class="row mx-0">
-                        <?php echo $categoria->mostrarCategoriasPrincipal() ?>
-                    </div>
+            <div class="mt-5 container" style="padding-bottom: 10px;">
+                <h1>Categorias</h1>
+                <hr id="linea">
+            </div>
+            <div class="container-fluid">
+                <div class="row mx-0">
+                    <?php echo $categoria->mostrarCategoriasPrincipal() ?>
                 </div>
             </div>
-            
+
         </section>
-
-
-        <!--
-        ACTIVAR SI ES NECESARIO... XD
-        <div class="album py-5">
-            <h1>Tendencia</h1>
+        
+        
+        <div class="album mt-5">
             <div class="container">
+                <h1>LO MÁS NUEVO</h1>
+                <hr id="linea">
+                <br>
                 <div class="row">
-                    <svg class="bd-placeholder-img card-img-top" >
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="https://picsum.photos/250/450?random=1" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="d-flex justify-content-center align-items-center">
-                                    <div class="btn-group">
-                                        <a href="product.html" class="btn btn-primary my-2">Ver Más</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="https://picsum.photos/250/450?random=2" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="d-flex justify-content-center align-items-center">
-                                    <div class="btn-group">
-                                        <a href="#" class="btn btn-primary my-2">Ver Más</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="https://picsum.photos/250/450?random=3" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="d-flex justify-content-center align-items-center">
-                                    <div class="btn-group">
-                                        <a href="#" class="btn btn-primary my-2">Ver Más</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="https://picsum.photos/250/450?random=4" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="d-flex justify-content-center align-items-center">
-                                    <div class="btn-group">
-                                        <a href="#" class="btn btn-primary my-2">Ver Más</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="https://picsum.photos/250/450?random=5" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="d-flex justify-content-center align-items-center">
-                                    <div class="btn-group">
-                                        <a href="#" class="btn btn-primary my-2">Ver Más</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="https://picsum.photos/250/450?random=6" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="d-flex justify-content-center align-items-center">
-                                    <div class="btn-group">
-                                        <a href="#" class="btn btn-primary my-2">Ver Más</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="https://picsum.photos/250/450?random=7" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="d-flex justify-content-center align-items-center">
-                                    <div class="btn-group">
-                                        <a href="#" class="btn btn-primary my-2">Ver Más</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="https://picsum.photos/250/450?random=8" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="d-flex justify-content-center align-items-center">
-                                    <div class="btn-group">
-                                        <a href="#" class="btn btn-primary my-2">Ver Más</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="https://picsum.photos/250/450?random=9" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="d-flex justify-content-center align-items-center">
-                                    <div class="btn-group">
-                                        <a href="#" class="btn btn-primary my-2">Ver Más</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php echo $producto->mostrarPrincipal() ?>
                 </div>
+                <div class="row flex justify-content-center align-items-center" id="produPrincipal">
+                    <a href="products.php" class="btn btn-primary my-2">Ver Más</a>
+                </div>
+                
             </div>
         </div>
-
-        -->
 
         <footer>
             <div class="container">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-lg-4 col-md-12">
                         <br>
-                        <h2>Síguenos en</h2>
-                        <a href="#"><i class="fa fa-facebook fa-3x"></i></a>
-                        <a href="#"><i class="fa fa-twitter fa-3x"></i></a>
-                        <a href="#"><i class="fa fa-instagram fa-3x"></i></a>
-                        <a href="#"><i class="fa fa-snapchat-ghost fa-3x"></i></a>
+                        <h1>ENCUETRANOS EN</h1><br>
+                        <div class="row flex align-items-center">
+                            <a class="nav-link" href="https://www.facebook.com/Bella-Sulamita-247119685934411/?ref=search&__tn__=%2Cd%2CP-R&eid=ARCAs1xzJDxQprwBCAomq6iRiPfl3pcEfhqg-z06GWaKIyhRr89-dpNqvVaDoDGeYa6fA7nQUcmoEt_B"><i class="fa fa-facebook fa-3x"></i></a>
+                            <p>Bella Sulamita</p>
+                        </div>
+                        <div class="row flex align-items-center">
+                            <a class="nav-link" href="#"><i class="fa fa-whatsapp fa-3x"></i></a>
+                            <p>044-238-145-16-49</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <br>
+                        <h1>QUIENES SOMOS</h1><br>
+                        <p>
+                            La empresa está principalmente enfocada a la ropa femenina. La boutique fue creada en Octubre de 2008, con el lema 
+                            "todo el mundo tiene derecho a disfrutar de la belleza de la moda".
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <br>
+                        <h1>NUESTRA MISIÓN</h1><br>
+                        <P>
+                            BELLA SULAMITA ofrece las últimas tendencias para mujeres, a unos precios más que atractivos. 
+                            El objetivo es ofrecer productos de calidad con estilo, a precios atractivos para todos los usuarios del mundo.
+                        </P>
+                    </div>
+                </div><br>
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <P>©2019 BELLA SULAMITA Todos los derechos reservados</P
                     </div>
                 </div>
+
             </div>
         </footer>
 
-
+        <script>
+        window.onload = function() {
+            var contenedor = document.getElementById('contenedor_carga');
+            contenedor.style.visibility = 'hidden';
+            contenedor.style.opacity = '0';
+        };
+        </script>
         <!-- Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

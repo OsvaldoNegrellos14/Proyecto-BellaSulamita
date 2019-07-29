@@ -7,7 +7,7 @@ session_start();
 if (!isset($_SESSION["autentificado"])) {
     header("Location: index.php");
 }
-if (isset($_FILES["imagen"]) && isset($_POST["titulo"]) && isset($_POST["informacion"])) {
+if (!empty($_FILES["imagen"]) && !empty($_POST["titulo"]) && !empty($_POST["informacion"])) {
     $slider->subirNuevoSlider($_FILES["imagen"], $_POST["titulo"], $_POST["informacion"]);
     header("Location: tablaSlider.php");
 }
@@ -38,11 +38,6 @@ if (isset($_FILES["imagen"]) && isset($_POST["titulo"]) && isset($_POST["informa
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="panel.php">Home <span class="sr-only">(current)</span></a>
-                    </li>
-
-
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                     <a href="salir.php"><i class="fa fa-power-off"></i></a>

@@ -1,22 +1,23 @@
 <?php
 include_once './backend/modelo/BD.php';
 include_once './backend/controlador/CCategoria.php';
-include_once './backend/modelo/MCategoria.php';
 include_once './backend/controlador/CProducto.php';
+include_once './backend/modelo/MCategoria.php';
 include_once './backend/modelo/MProducto.php';
-$categoria = new CCategoria();
 $producto = new CProducto();
+$categoria = new CCategoria();
+$ide = $_GET["id"];
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Productos</title>
+        <title><?php echo $categoria->mostrarCategoria($ide)['categoria'] ?></title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="style/css.css"/>
         <link rel="stylesheet" href="style/font-awesome.min.css">
     </head>
@@ -32,7 +33,7 @@ $producto = new CProducto();
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown active">
                         <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Categorias
                         </a>
@@ -40,25 +41,25 @@ $producto = new CProducto();
                             <?php echo $categoria->mostrarTodasCategorias() ?>
                         </div>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="products.php">Nuestros Productos<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contacto.php">Contacto</a>
                     </li>
-
                 </ul>
             </div>
         </nav>
 
         <div class="contenido">
-            <h1>PRODUCTOS DISPONIBLES</h1>
+            <h1>PRODUCTOS RELACIONADOS</h1>
         </div>
-        <div class="album mt-5">
+
+        <div class="album py-5">
             <div class="container">
                 <div class="row">
 
-                    <?php echo $producto->mostrarTodos() ?>
+                    <?php echo $producto->mostrarTodosCategoria($ide) ?>
 
                 </div>
             </div>

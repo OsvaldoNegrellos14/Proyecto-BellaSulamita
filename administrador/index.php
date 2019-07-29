@@ -51,21 +51,15 @@ if (isset($_SESSION["autentificado"])) {
 
 
                         <div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
-                            <input class="input100" type="text" name="usuario" placeholder="Usuario">
-                            <div class="invalid-feedback">Oops, you missed this one.</div>
-                            <!--<div class="col-4"><input name="nombre" type="text" placeholder="Nombre"></div>
-                            <span class="focus-input100" data-placeholder="User"></span>-->
+                            <input class="input100" type="text" name="usuario" placeholder="Usuario" autocomplete="off">
                         </div>
 
                         <div class="wrap-input100 validate-input" data-validate="Enter password">
                             <span class="btn-show-pass">
 
                             </span>
-                            <input class="input100" type="password" name="password" placeholder="Contraseña">
-                            <div class="invalid-feedback">Enter your password too!</div>
-                            <!--<span class="focus-input100" data-placeholder="Password"></span>-->
+                            <input class="input100" type="password" name="password" placeholder="Contraseña" autocomplete="off">
                         </div>
-                        <p hidden="" style="color: red; font-size: 15px;">Error de autentificación, Favor de intentar de nuevo</p>
                         <div class="container-login100-form-btn">
                             <div class="wrap-login100-form-btn">
                                 <div class="login100-form-bgbtn"></div>

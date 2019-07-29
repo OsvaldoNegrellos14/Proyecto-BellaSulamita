@@ -1,14 +1,17 @@
 <?php
 include_once '../backend/modelo/BD.php';
 include_once '../backend/modelo/MProducto.php';
+include_once '../backend/modelo/MCategoria.php';
 include_once '../backend/controlador/CProducto.php';
+include_once '../backend/controlador/CCategoria.php';
 $producto = new CProducto();
+$categoria = new CCategoria();
 session_start();
 if (!isset($_SESSION["autentificado"])) {
     header("Location: index.php");
 }
-if (isset($_POST["id"]) && isset($_FILES["imagen"]) && isset($_POST["nombre"]) && isset($_POST["description"]) && isset($_POST["precio"]) && isset($_POST["marca"]) && isset($_POST["color"]) && isset($_POST["talla"])) {
-    $producto->editarProducto($_POST["id"], $_FILES["imagen"], $_POST["nombre"], $_POST["description"], $_POST["precio"], $_POST["marca"], $_POST["color"], $_POST["talla"]);
+if (isset($_POST["id"]) && isset($_POST["id_categoria"]) && isset($_FILES["imagen"]) && isset($_POST["nombre"]) && isset($_POST["description"]) && isset($_POST["precio"]) && isset($_POST["marca"]) && isset($_POST["color"]) && isset($_POST["talla"])) {
+    $producto->editarProducto($_POST["id"], $_POST["id_categoria"], $_FILES["imagen"], $_POST["nombre"], $_POST["description"], $_POST["precio"], $_POST["marca"], $_POST["color"], $_POST["talla"]);
     header("Location: tablaProducto.php");
 }
 $ide = (int) $_GET["id"];
@@ -40,10 +43,6 @@ $produ = $producto->mostrarProducto($ide);
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="panel.php">Home <span class="sr-only">(current)</span></a>
-                    </li>
-
 
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
@@ -115,11 +114,19 @@ $produ = $producto->mostrarProducto($ide);
                                 <input type="text" require name="color" class="form-control" aria-label="Sizing example input"
                                        aria-describedby="inputGroup-sizing-default" placeholder="Color" value="<?php echo $produ["color"] ?>">
                             </div>
-
+                            
+                            <div class="input-group mb-3">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="customRadio" name="example1" value="customEx">
+                                    <label class="custom-control-label" for="customRadio">Custom radio</label>
+                                </div> 
+                            </div>
+                            
                             <div class="input-group mb-3">
                                 <textarea style="height: 100px" class="form-control"
                                           aria-label="Sizing example input" require name="description"
-                                          aria-describedby="inputGroup-sizing-default" placeholder="Descripcion Completa del producto"><?php echo $produ["description"] ?></textarea>
+                                          aria-describedby="inputGroup-sizing-default" 
+                                          placeholder="Descripcion Completa del producto"><?php echo $produ["description"] ?></textarea>
                             </div>
 
                             <input type="file" name="imagen" accept="image/*">

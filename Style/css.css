@@ -3,8 +3,47 @@ header{
     font-size: 60px;
 }
 
+.contenido{
+    padding-top: 65px;
+}
+
+#navbar{
+    position: fixed;
+    z-index: 99;
+    width: 100%;
+    height: 65px;
+    font-size: 20px;
+}
+
+#navbar #principal{
+    font-size: 25px;
+}
+
+#indicador{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-top: 5px;
+    background-color: #444444;
+    border-radius: 50px;
+    opacity: 0.6;
+    height: 50px;
+    width: 50px;
+    align-items: center;
+}
+
+#indicador i{
+    font-size: 40px;
+}
+
 div ul li a{
     align-content: center;
+}
+
+#linea{
+    width: 100%;
+    border: 4px solid #E7B5E3;
+    margin-top: 0;
 }
 
 div h5{
@@ -32,10 +71,31 @@ section img{
     padding-bottom: 15px;
 }
 
+#produPrincipal a, #sendMessageButton{
+    color: black;
+    background-color: #E7B5E3;
+    border: 1px solid black;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    opacity: 0.5;
+    font-size: 25px;
+}
+
+#produPrincipal a:hover, #sendMessageButton:hover{
+    transition: all 0.2s ease-in-out;
+    opacity: 1;
+    transform: scale(1.1);
+}
+
 footer{
-    text-align: center;
     color: white;
     background-color: #000000;
+}
+
+footer h1{
+    font-size: 20px !important;
+    text-align: left !important;
 }
 
 .container{
@@ -43,23 +103,52 @@ footer{
 }
 footer a{
     display: inline-block;
-    color: purple;
+    color: #E7B5E3;
     text-decoration: none;
     padding: 15px;
-
 }
-div .col-6 img{
+
+footer p{
+    font-size: 15px;
+    margin-bottom: 0;
+    text-align: justify;
+}
+
+#producto .col-12 img, #producto .col-lg-6{
     height: 550px;
 }
 
 
-div .col-6 h2{
+#producto .col-12 h2, #producto .col-lg-6 h2{
     font-size: 30px;
     text-align: center;
 }
 
-div .col-6 p{
+#producto .col-12 p, #producto .col-lg-6 p{
     font-size: 20px;
+}
+
+#productos{
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+#productos:hover{
+    transform: scale(1.1);
+}
+
+#productos a{
+    color: black;
+    background-color: #E7B5E3;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    opacity: 0.5;
+}
+
+#productos a:hover { 
+    opacity: 1;
 }
 
 .mapa iframe{
@@ -75,7 +164,7 @@ div h1{
 
 .mapa iframe{
     width: 100%;
-    height: 550px;
+    height: 200px;
 }
 
 div .mapa h1{
@@ -95,13 +184,14 @@ body main {
 
 .formulario input, .formulario textarea{
     width: 100%;
-    height: 60px;
-    border: 1px solid #888888;
-    padding: 15px;
-    
+    height: 50px;
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 5px;
+
 }
 .formulario textarea{
-height: 300px;
+    height: 200px;
 }
 
 .formulario button{
@@ -111,7 +201,85 @@ height: 300px;
     font-size: 20px;
     margin-top: 30px;
     border-color: purple;
-    
+
 }
 
+.formulario #input{
+    margin-bottom: 24px;
+}
 
+#DatosContacto p{
+    font-size: 15px;
+}
+
+#productos{
+    transition: all 0.5s;
+}
+
+#productos:hover{
+    transition: all 0.5s;
+    background-color:#EFEEEE;
+}
+
+*,*:after, *:before{
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+#contenedor_carga{
+    background-color: rgba(250, 240, 245, 0.9);
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    -webkit-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+    z-index: 10000;
+}
+
+.loader{
+    height: 100px;
+    width: 100px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    border: 2px solid rgba(0, 0, 0, 0.4);
+    border-top-color: #fff;
+    border-bottom-color: #fff;
+    animation: spinner3 800ms ease infinite;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+} 
+@keyframes spinner3 { 
+    to { 
+        transform: rotate(360deg);
+    } 
+}
+
+#zoom img{
+    -webkit-transition:all .9s ease; /* Safari y Chrome */
+    -moz-transition:all .9s ease; /* Firefox */
+    -o-transition:all .9s ease; /* IE 9 */
+    -ms-transition:all .9s ease; /* Opera */
+    width:100%;
+}
+
+#zoom:hover img{
+    -webkit-transform:scale(1.25);
+    -moz-transform:scale(1.25);
+    -ms-transform:scale(1.25);
+    -o-transform:scale(1.25);
+    transform:scale(1.25);
+}
+
+#zoom{
+    width:auto;
+    height:auto;
+    overflow:hidden;
+}

@@ -7,7 +7,7 @@ session_start();
 if (!isset($_SESSION["autentificado"])) {
     header("Location: index.php");
 }
-if (isset($_POST["categoria"]) && isset($_POST["imagen"])) {
+if (!empty($_POST["categoria"]) && !empty($_POST["imagen"])) {
     $categoria->subirNuevaCategoria($_POST["categoria"], $_FILES["imagen"]);
     header("Location: tablaCategoria.php");
 }
@@ -38,11 +38,6 @@ if (isset($_POST["categoria"]) && isset($_POST["imagen"])) {
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="panel.php">Home <span class="sr-only">(current)</span></a>
-                    </li>
-
-
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                     <a href="salir.php"><i class="fa fa-power-off"></i></a>

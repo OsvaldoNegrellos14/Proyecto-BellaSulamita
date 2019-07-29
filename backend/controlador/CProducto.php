@@ -16,20 +16,23 @@ class CProducto {
             return $producto;
     }
     
+    
+    
     public function mostrarTodos(){
         $producto= $this->modelo->consultarProductos();
         $acu="";
         foreach ($producto as $produ){
-            $acu .= '<div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
+            $acu .= '<div class="col-lg-4 col-md-6 col-sm-12">
+                        <div id="productos" class="card mb-4 shadow-sm">
                             <img src="'.$produ["imagen"].'" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h4 class="card-title">'.$produ["nombre"].'</h4>
-                                <p class="card-text">'.$produ["description"].'</p>
-                                <div class="d-flex justify-content-center align-items-center">
-                                    <div class="btn-group">
-                                        <a href="product.php?id='.$produ["id"].'" class="btn btn-primary my-2">Ver Más</a>
-                                    </div>
+                                <h4 class="card-title">'.substr($produ["nombre"],0,18).'...</h4>
+                                <p class="card-text">'.substr($produ["description"],0,30).'...</p>
+                                <div >
+                                        <div class="row">
+                                            <div class="col-6 d-flex justify-content-center align-items-center"><h5>$'. $produ["precio"] .'.00</h5></div>
+                                            <div class="col-6"><a href="product.php?id='.$produ["id"].'" class="btn btn-primary my-2">Ver Más</a></div>
+                                        </div>
                                 </div>
                             </div>
                         </div>
@@ -38,19 +41,21 @@ class CProducto {
         return $acu;
     }
     
-    public function mostrarProductoId(){
-        $producto= $this->modelo->consultarProductosId($id);
+    public function mostrarPrincipal(){
+        $producto= $this->modelo->consultarProductosPrincipal();
         $acu="";
-        foreach ($producto as $product){
-            $acu.='<div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="https://picsum.photos/250/450?random=1" class="card-img-top" alt="...">
+        foreach ($producto as $produ){
+            $acu .= '<div class="col-lg-4 col-md-6 col-sm-12">
+                        <div id="productos" class="card mb-4 shadow-sm">
+                            <img src="'.$produ["imagen"].'" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="d-flex justify-content-center align-items-center">
-                                    <div class="btn-group">
-                                        <a href="product.php" class="btn btn-primary my-2">Ver Más</a>
-                                    </div>
+                                <h4 class="card-title">'.substr($produ["nombre"],0,18).'...</h4>
+                                <p class="card-text">'.substr($produ["description"],0,30).'...</p>
+                                <div >
+                                        <div class="row">
+                                            <div class="col-6 d-flex justify-content-center align-items-center"><h5>$'. $produ["precio"] .'.00</h5></div>
+                                            <div class="col-6"><a href="product.php?id='.$produ["id"].'" class="btn btn-primary my-2">Ver Más</a></div>
+                                        </div>
                                 </div>
                             </div>
                         </div>
@@ -58,6 +63,54 @@ class CProducto {
         }
         return $acu;
     }
+    
+    public function mostrarTodosCategoria($id){
+        $producto= $this->modelo->consultarProductosCategoria($id);
+        $acu="";
+        foreach ($producto as $produ){
+            $acu .= '<div class="col-lg-4 col-md-6 col-sm-12">
+                        <div id="productos" class="card mb-4 shadow-sm">
+                            <img src="'.$produ["imagen"].'" class="card-img-top">
+                            <div class="card-body">
+                                <h4 class="card-title">'.substr($produ["nombre"],0,25).'</h4>
+                                <p class="card-text">'.substr($produ["description"],0,38).'...</p>
+                                <div >
+                                        <div class="row">
+                                            <div class="col-6 d-flex justify-content-center align-items-center"><h5>$'. $produ["precio"] .'.00</h5></div>
+                                            <div class="col-6"><a href="product.php?id='.$produ["id"].'" class="btn btn-primary my-2">Ver Más</a></div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>';
+        }
+        return $acu;
+    }
+    
+     public function mostrarCategoriaProducto($id){
+        $producto= $this->modelo->consultarCategoriaProducto($id);
+        $acu="";
+        foreach ($producto as $produ){
+            $acu .= '<div class="col-lg-4 col-md-6 col-sm-12">
+                        <div id="productos" class="card mb-4 shadow-sm">
+                            <img src="'.$produ["imagen"].'" class="card-img-top">
+                            <div class="card-body">
+                                <h4 class="card-title">'.substr($produ["nombre"],0,25).'</h4>
+                                <p class="card-text">'.substr($produ["description"],0,38).'...</p>
+                                <div >
+                                        <div class="row">
+                                            <div class="col-6 d-flex justify-content-center align-items-center"><h5>$'. $produ["precio"] .'.00</h5></div>
+                                            <div class="col-6"><a href="product.php?id='.$produ["id"].'" class="btn btn-primary my-2">Ver Más</a></div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>';
+        }
+        return $acu;
+    }
+    
+    
 
     public function mostrarProductoAdmin(){
         $producto= $this->modelo->consultarProductos();
@@ -80,9 +133,9 @@ class CProducto {
         return $acu;
     }
 
-    public function editarProducto($id, $imagen, $nombre, $description, $precio, $marca, $color, $talla){
+    public function editarProducto($id, $id_categoria, $imagen, $nombre, $description, $precio, $marca, $color, $talla){
         copy($imagen["tmp_name"], "../multimedia/".$imagen["name"]);
-        $this->modelo->actualizarProducto($id, "multimedia/".$imagen["name"], $nombre, $description, $precio, $marca, $color, $talla);
+        $this->modelo->actualizarProducto($id, $id_categoria, "multimedia/".$imagen["name"], $nombre, $description, $precio, $marca, $color, $talla);
     }
 
     public function eliminarProducto($id){

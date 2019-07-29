@@ -21,7 +21,7 @@ class MProducto extends BD {
 
     public function consultaProducto($id) {
         try {
-            $stmt = $this->conn->prepare("SELECT * FROM productos where id=:id");
+            $stmt = $this->conn->prepare("SELECT productos.*, categoria FROM productos inner join categoria on productos.id_categoria=categoria.id where productos.id=:id");
             $stmt->bindParam(':id', $id);
             $stmt->execute();
             foreach ($stmt->fetchAll() as $registro) {
@@ -44,24 +44,47 @@ class MProducto extends BD {
         }
     }
     
-    public function consultarProductosId($id){
+    public function consultarProductosPrincipal(){
         try {
-            $stmt = $this->conn->prepare("SELECT * FROM productos where id=:id");
+            $stmt = $this->conn->prepare("SELECT * FROM productos ORDER BY id desc LIMIT 6");
+            $stmt->execute();
+            return $stmt->fetchAll();
+           
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+    
+    
+    public function consultarProductosCategoria($id){
+        try {
+            $stmt = $this->conn->prepare("SELECT * FROM productos where id_categoria=:id");
             $stmt->bindParam(':id', $id);
             $stmt->execute();
-            foreach ($stmt->fetchAll() as $producto) {
-                return $producto;
-            }
-            return null;
+            return $stmt->fetchAll();
+           
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+    
+    public function consultarCategoriaProducto($id){
+        try {
+            $stmt = $this->conn->prepare("SELECT * FROM productos where id_categoria=:id order by rand() limit 3");
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+            return $stmt->fetchAll();
+           
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
     }
 
-    public function actualizarProducto($id, $imagen, $nombre, $description, $precio, $marca, $color, $talla){
+    public function actualizarProducto($id, $id_categoria, $imagen, $nombre, $description, $precio, $marca, $color, $talla){
         try {
-            $stmt = $this->conn->prepare("UPDATE productos set imagen=:imagen, nombre=:nombre, description=:description, precio=:precio, marca=:marca, color=:color, talla=:talla where id=:id");
+            $stmt = $this->conn->prepare("UPDATE productos set id_categoria=:id_categoria imagen=:imagen, nombre=:nombre, description=:description, precio=:precio, marca=:marca, color=:color, talla=:talla where id=:id");
             $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':id_categoria', $id_categoria);
             $stmt->bindParam(':imagen', $imagen);
             $stmt->bindParam(':nombre', $nombre);
             $stmt->bindParam(':description', $description);

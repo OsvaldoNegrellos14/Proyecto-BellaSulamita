@@ -7,7 +7,12 @@ session_start();
 if (!isset($_SESSION["autentificado"])) {
     header("Location: index.php");
 }
-if (isset($_FILES["imagen"]) && isset($_POST["nombre"]) && isset($_POST["description"]) && isset($_POST["precio"]) && isset($_POST["marca"]) && isset($_POST["color"]) && isset($_POST["talla"])) {
+//if (isset($_FILES["imagen"]) && isset($_POST["nombre"]) && isset($_POST["description"]) && isset($_POST["precio"]) && isset($_POST["marca"]) && isset($_POST["color"]) && isset($_POST["talla"])) {
+//    $producto->subirNuevoProducto($_FILES["imagen"], $_POST["nombre"], $_POST["description"], $_POST["precio"], $_POST["marca"], $_POST["color"], $_POST["talla"]);
+//    header("Location: tablaProducto.php");
+//}
+
+if(!empty($_FILES["imagen"]) && !empty($_POST["nombre"]) && !empty($_POST["description"]) && !empty($_POST["precio"]) && !empty($_POST["marca"]) && !empty($_POST["color"]) && !empty($_POST["talla"]) ){
     $producto->subirNuevoProducto($_FILES["imagen"], $_POST["nombre"], $_POST["description"], $_POST["precio"], $_POST["marca"], $_POST["color"], $_POST["talla"]);
     header("Location: tablaProducto.php");
 }
@@ -38,10 +43,6 @@ if (isset($_FILES["imagen"]) && isset($_POST["nombre"]) && isset($_POST["descrip
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="panel.php">Home <span class="sr-only">(current)</span></a>
-                    </li>
-
 
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
