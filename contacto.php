@@ -52,6 +52,10 @@ if (isset($_POST["nombre"]) && isset($_POST["telefono"]) && isset($_POST["asunto
                         <a class="nav-link" href="contacto.php">Contacto</a>
                     </li>
                 </ul>
+                <form class="form-inline my-2 my-lg-0" method="get" action="resultadoBusqueda.php">
+                    <input style="width: 270px;" class="form-control mr-sm-2" type="search" placeholder="Elemento a buscar" name="busqueda">
+                    <input class="btn boton my-2 my-sm-0" type="submit" value="Buscar">
+                </form>
             </div>
         </nav>
 

@@ -7,7 +7,7 @@ session_start();
 if (!isset($_SESSION["autentificado"])) {
     header("Location: index.php");
 }
-if (!empty($_POST["categoria"]) && !empty($_POST["imagen"])) {
+if (!empty($_POST["categoria"]) && !empty($_FILES["imagen"])) {
     $categoria->subirNuevaCategoria($_POST["categoria"], $_FILES["imagen"]);
     header("Location: tablaCategoria.php");
 }

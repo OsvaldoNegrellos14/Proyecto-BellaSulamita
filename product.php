@@ -19,6 +19,8 @@ $produ = $producto->mostrarProducto($ide);
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
         <link rel="stylesheet" href="style/css.css"/>
+        <script src="js/main.js"></script>
+        <link rel="stylesheet" href="Style/cssZoom.css">
         <link rel="stylesheet" href="style/font-awesome.min.css">
     </head>
     <body>
@@ -48,31 +50,34 @@ $produ = $producto->mostrarProducto($ide);
                         <a class="nav-link" href="contacto.php">Contacto</a>
                     </li>
                 </ul>
+                <form class="form-inline my-2 my-lg-0" method="get" action="resultadoBusqueda.php">
+                    <input style="width: 270px;" class="form-control mr-sm-2" type="search" placeholder="Elemento a buscar" name="busqueda">
+                    <input class="btn boton my-2 my-sm-0" type="submit" value="Buscar">
+                </form>
             </div>
         </nav>
 
 
 
         <div id="producto" class="contenido">
-            <div class="container">
-                <h1 class="jumbotron-heading"><?php echo $produ["nombre"] ?></h1>
+            <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-6 col-12 mt-5">
-                        <img src="<?php echo $produ["imagen"] ?>" class="d-block w-100">
+                    <div class="col-xl-5 col-lg-6 col-12 mt-5">
+                        <div class="img-zoom-container">
+                            <img id="myimage" src="<?php echo $produ["imagen"] ?>" class="d-block w-100" alt="<?php echo $produ["nombre"] ?>">
+                        </div>
                     </div>
-                    <div class="col-lg-6 col-12 mt-5">
-
-                        <h3 class="text-justify">COLOR:</h3><p><?php echo $produ["color"] ?></p>
-                        <br>
-                        <h3 class="text-justify">CATEGORIA:</h3><p><?php echo $produ["categoria"] ?></p>
-                        <br>
-                        <h3 class="text-justify">TALLA:</h3><p><?php echo $produ["talla"] ?></p>
-                        <br>
-                        <h3 class="text-justify">MARCA:</h3><p><?php echo $produ["marca"] ?></p>
-                        <br>
-                        <h3 class="text-justify">PRECIO:</h3><p>$<?php echo $produ["precio"] ?>.99</p>
-                        <br>
-                        <h3 class="text-justify">DESCRIPCIÓN:</h3>
+                    <div class="col-xl-3 col-lg-6 col-12 mt-5">
+                        <div id="myresult" class="img-zoom-result"></div>
+                    </div>
+                    <div class="col-xl-4 col-12 mt-5">
+                        <h1 class="jumbotron-heading"><?php echo $produ["nombre"] ?></h1>
+                        <h2 class="text-justify">COLOR:</h2><p><?php echo $produ["color"] ?></p>
+                        <h2 class="text-justify">CATEGORIA:</h2><p><?php echo $produ["categoria"] ?></p>
+                        <h2 class="text-justify">TALLA:</h2><p><?php echo $produ["talla"] ?></p>
+                        <h2 class="text-justify">MARCA:</h2><p><?php echo $produ["marca"] ?></p>
+                        <h2 class="text-justify">PRECIO:</h2><p>$<?php echo $produ["precio"] ?>.99</p>
+                        <h2 class="text-justify">DESCRIPCIÓN:</h2>
                         <p class="text-justify"><?php echo $produ["description"] ?></p>
                     </div>
                 </div>
@@ -128,13 +133,15 @@ $produ = $producto->mostrarProducto($ide);
 
             </div>
         </footer>
-
         <script>
             window.onload = function () {
                 var contenedor = document.getElementById('contenedor_carga');
                 contenedor.style.visibility = 'hidden';
                 contenedor.style.opacity = '0';
             };
+        </script>
+        <script>
+            imageZoom("myimage", "myresult"); 
         </script>
         <!-- Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

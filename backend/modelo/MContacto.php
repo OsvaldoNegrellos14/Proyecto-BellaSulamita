@@ -15,4 +15,41 @@ class MContacto  extends BD{
             echo "Error: " . $e->getMessage();
         }
     }
+    
+    public function consultarTodas(){
+        try {
+            $stmt = $this->conn->prepare("SELECT * FROM formulario");
+            $stmt->execute();
+            return $stmt->fetchAll();
+           
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+    
+    public function consultaFormulario($id) {
+        try {
+            $stmt = $this->conn->prepare("SELECT * FROM formulario where id=:id");
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+            foreach ($stmt->fetchAll() as $registro) {
+                return $registro;
+            }
+            return null;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+    
+    public function borrarFormulario($id) {
+        try {
+            $stmt = $this->conn->prepare("DELETE FROM categoria where id=:id");
+            $stmt->bindParam(':id', $id);
+            return $stmt->execute();
+           
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+    
 }

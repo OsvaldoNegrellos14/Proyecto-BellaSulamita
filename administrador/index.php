@@ -5,7 +5,7 @@ include_once '../backend/controlador/CAdmin.php';
 session_start();
 $admin = new CAdmin();
 if (isset($_POST["usuario"]) && isset($_POST["password"])) {
-    $admin->autentificar($_POST["usuario"], $_POST["password"]);
+    $resultado = $admin->autentificar($_POST["usuario"], $_POST["password"]);
 }
 
 if (isset($_SESSION["autentificado"])) {
@@ -60,6 +60,11 @@ if (isset($_SESSION["autentificado"])) {
                             </span>
                             <input class="input100" type="password" name="password" placeholder="Contraseña" autocomplete="off">
                         </div>
+                        <?php 
+                        if(!empty($resultado)){
+                            echo $resultado;
+                        }
+                        ?>
                         <div class="container-login100-form-btn">
                             <div class="wrap-login100-form-btn">
                                 <div class="login100-form-bgbtn"></div>

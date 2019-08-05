@@ -1,18 +1,36 @@
+body *{
+    font-family: "Crimson Text",serif
+}
+
 header{
     text-align: center;
     font-size: 60px;
 }
 
+.boton{
+    color: #E7B5E3;
+    border-color: #E7B5E3;
+}
+
+.boton:hover{
+    color: #fff;
+    background-color: #E7B5E3;
+    border-color: #E7B5E3;
+}
+
 .contenido{
-    padding-top: 65px;
+    padding-top: 63px;
 }
 
 #navbar{
     position: fixed;
     z-index: 99;
     width: 100%;
-    height: 65px;
     font-size: 20px;
+}
+
+#ul{
+    margin-right: 25% !important;
 }
 
 #navbar #principal{
@@ -40,10 +58,30 @@ div ul li a{
     align-content: center;
 }
 
-#linea{
-    width: 100%;
+.parallax{
+    background-image: url(../multimedia/parallax-1.jpg);
+    height: 200px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.linea hr{
+    width: 100px;
     border: 4px solid #E7B5E3;
-    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#contenido {
+    position: relative;
+    width: 640px;
+    height: auto;
+    margin: 20px auto;
+    border: 12px solid #fff;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px rgba(50,50,50 0.5);
 }
 
 div h5{
@@ -67,8 +105,8 @@ div .card h5{
 }
 
 section img{
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 #produPrincipal a, #sendMessageButton{
@@ -114,18 +152,20 @@ footer p{
     text-align: justify;
 }
 
-#producto .col-12 img, #producto .col-lg-6{
+#producto .col-12 img, #producto .col-lg-6 img{
+    width: 100%;
     height: 550px;
 }
 
 
 #producto .col-12 h2, #producto .col-lg-6 h2{
-    font-size: 30px;
+    font-size: 20px;
     text-align: center;
 }
 
 #producto .col-12 p, #producto .col-lg-6 p{
-    font-size: 20px;
+    font-size: 19px;
+    color: #929292;
 }
 
 #productos{
@@ -137,7 +177,7 @@ footer p{
     transform: scale(1.1);
 }
 
-#productos a{
+#productos .bot{
     color: black;
     background-color: #E7B5E3;
     border: 1px solid black;
@@ -145,10 +185,17 @@ footer p{
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     opacity: 0.5;
+    padding: 5px;
+    text-decoration: none;
 }
 
 #productos a:hover { 
     opacity: 1;
+}
+
+table, th, td{
+    border: 1px solid rgb(197, 203, 213);
+    border-collapse: collapse;
 }
 
 .mapa iframe{

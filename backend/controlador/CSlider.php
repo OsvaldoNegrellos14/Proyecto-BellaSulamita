@@ -25,9 +25,10 @@ class CSlider {
             $acu .= '<tbody>
                         <tr>
                             <th scope="row"><h5>' . $slid["id"] . '</h5></th>
+                            <th scope="row"><img style="width: auto; height: 80px" src="../' . $slid["imagen"] . '"></th>
                             <th scope="row"><h5>' . $slid["titulo"] . '</h5></th>
                             <th scope="row"><h5>' . $slid["informacion"] . '</h5></th>
-                            <td><button type="button" class="btn btn-primary"><a href="editarSlider.php?id=' . $slid["id"] . '"><i class="fa fa-pencil-square-o"></i></a></button></td>
+                            <td><button type="button" class="btn btn-primary"><a href="editarSlider.php?id=' . $slid["id"] . '"><i class="fa fa-edit"></i></a></button></td>
                             <td><button type="button" class="btn btn-primary"><a href="eliminarSlider.php?id=' . $slid["id"] . '"><i class="fa fa-trash"></i></a></button></td>
 			</tr>
                     </tbody>';

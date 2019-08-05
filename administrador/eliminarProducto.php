@@ -89,10 +89,9 @@ $produ = $producto->mostrarProducto($ide);
                     <div class="container">
                         <div class="row">
                             <div class="col-md-6">
-                                <h1>Bienvenido <?php echo $_SESSION["autentificado"]["username"] ?></h1><hr>
                                 <h2>¿Seguro que desea eliminar la foto?</h2>
                                 <h5>Esta accion no se puede desahacer posteriormente</h5><br>
-                                <h3>Imagen:</h3><br><img src="../<?php echo $produ["imagen"] ?> "width="200">
+                                <h3>Imagen:</h3><br><img src="../<?php echo $produ["imagen"] ?> "width="500">
                             </div>
                             <div class="col-md-6">
                                 <form method="GET" action="eliminarProducto.php?id=<?php echo $ide ?>" enctype="multipart/form-data">

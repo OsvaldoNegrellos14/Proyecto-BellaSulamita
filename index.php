@@ -10,6 +10,9 @@ $imagenes = new MSlider();
 $images = $imagenes->consultarSliders();
 $categoria = new CCategoria();
 $producto = new CProducto();
+
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,19 +20,22 @@ $producto = new CProducto();
         <title>Bella Sulamita</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
         <link rel="stylesheet" href="style/css.css"/>
         <link rel="stylesheet" href="style/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Crimson+Text&display=swap" rel="stylesheet">
     </head>
     <body>
+        <!--animacion_carga-->
         <div id="contenedor_carga">
            <div class="loader"></div> 
         </div>
+        <!--animacion_carga-->
         
-
+        
+        <!--barra de navegacion-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
             <a class="navbar-brand" href="index.php" id="principal">Bella Sulamita</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,9 +59,16 @@ $producto = new CProducto();
                         <a class="nav-link" href="contacto.php">Contacto</a>
                     </li>
                 </ul>
+                <form class="form-inline my-2 my-lg-0" method="get" action="resultadoBusqueda.php">
+                    <input style="width: 270px;" class="form-control mr-sm-2" type="search" placeholder="Elemento a buscar" name="busqueda">
+                    <input class="btn boton my-2 my-sm-0" type="submit" value="Buscar">
+                </form>
             </div>
         </nav>
-
+        <!--barra de navegacion-->
+        
+        
+        <!--slider-->
         <div class="bd-example contenido">
             <?php if(count($images)>0):?>
             <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
@@ -69,7 +82,7 @@ $producto = new CProducto();
 
                     <?php $cnt = 0;foreach ($images as $img): ?>
                         <div class="carousel-item <?php if($cnt==0){ echo 'active'; }?>">
-                            <img style="width: 100%" src="<?php echo $img["imagen"] ?>" class="img-slider d-block w-100">
+                            <img src="<?php echo $img["imagen"] ?>" class="img-slider d-block w-100">
                             <div class="carousel-caption d-none d-md-block" style="background-color: black; opacity: 0.3">
                                 <h5><?php echo $img["titulo"] ?></h5>
                                 <p><?php echo $img["informacion"] ?></p>
@@ -96,25 +109,38 @@ $producto = new CProducto();
                 <?php endif; ?>
             </div>
         </div>
+        <!--slider-->
+        
 
-        <section>
-            <div class="mt-5 container" style="padding-bottom: 10px;">
-                <h1>Categorias</h1>
-                <hr id="linea">
+        <!--categorias-->
+        <section style="padding-top: 100px;">
+            <div class="mt-5 " style="padding-bottom: 10px;">
+                <div class="parallax linea " style="text-align: center">
+                    <h1 style="background-color: black; opacity: 0.3; color: white">Categorias</h1>
+                    <hr>
+                </div>
             </div>
             <div class="container-fluid">
+                <br>
                 <div class="row mx-0">
                     <?php echo $categoria->mostrarCategoriasPrincipal() ?>
                 </div>
+                <br>
+                <div class="row flex justify-content-center align-items-center" id="produPrincipal">
+                    <a href="categorias.php" class="btn btn-primary my-2">Ver Más</a>
+                </div>
             </div>
-
         </section>
+        <!--categorias-->
         
         
-        <div class="album mt-5">
+        <!--productos-->
+        <div style="padding-top: 100px;" class="album mt-5">
+            <div class="parallax linea">
+                <h1 style="background-color: black; opacity: 0.3; color: white">Lo Más Nuevo</h1>
+                <hr>
+            </div>
             <div class="container">
-                <h1>LO MÁS NUEVO</h1>
-                <hr id="linea">
                 <br>
                 <div class="row">
                     <?php echo $producto->mostrarPrincipal() ?>
@@ -125,7 +151,10 @@ $producto = new CProducto();
                 
             </div>
         </div>
-
+        <!--productos-->
+        
+        
+        <!--footer-->
         <footer>
             <div class="container">
                 <div class="row">
@@ -166,7 +195,7 @@ $producto = new CProducto();
 
             </div>
         </footer>
-
+        <!--footer-->
         <script>
         window.onload = function() {
             var contenedor = document.getElementById('contenedor_carga');

@@ -30,6 +30,17 @@ class MCategoria extends BD {
 
     public function consultarCategorias(){
         try {
+            $stmt = $this->conn->prepare("SELECT * FROM categoria order by id desc limit 6");
+            $stmt->execute();
+            return $stmt->fetchAll();
+           
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+    
+    public function consultarTodas(){
+        try {
             $stmt = $this->conn->prepare("SELECT * FROM categoria");
             $stmt->execute();
             return $stmt->fetchAll();

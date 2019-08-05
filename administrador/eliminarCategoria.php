@@ -88,15 +88,12 @@ $cate = $categoria->mostrarCategoria($ide);
 
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-6">
-                                <h1>Bienvenido <?php echo $_SESSION["autentificado"]["username"] ?></h1><hr>
-                                <h2>¿Seguro que desea eliminar la foto?</h2>
-                                <h5>Esta accion no se puede desahacer posteriormente</h5>
-                            </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12 text-center">
+                                <h1>¿Seguro que desea eliminar la foto?</h1>
+                                <h5>Esta accion no se puede desahacer posteriormente</h5><hr>
                                 <form method="GET" action="eliminarCategoria.php?id=<?php echo $ide ?>" enctype="multipart/form-data">
                                     <h3>Categoria:</h3><h5><?php echo $cate["categoria"] ?></h5><hr>
-                                    <h3>Imagen:</h3><br><img src="../<?php echo $cate["imagen"] ?> "width="200"><br>
+                                    <h3>Imagen:</h3><br><img src="../<?php echo $cate["imagen"] ?> "width="400"><br>
                                     <input type="hidden" name="id" value="<?php echo $ide ?>"><br>
                                     <input type="submit" name="aceptar" value="Aceptar y continuar" class="btn btn-primary">
                                     <input type="submit" name="cancel" value="Cancelar" class="btn btn-secondary">
