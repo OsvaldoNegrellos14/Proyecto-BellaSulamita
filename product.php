@@ -13,6 +13,7 @@ $produ = $producto->mostrarProducto($ide);
 <html>
     <head>
         <title><?php echo $produ["nombre"] ?></title>
+        <link rel="shortcut icon" href="multimedia/BS.png" />
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap CSS -->
@@ -22,13 +23,14 @@ $produ = $producto->mostrarProducto($ide);
         <script src="js/main.js"></script>
         <link rel="stylesheet" href="Style/cssZoom.css">
         <link rel="stylesheet" href="style/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     </head>
     <body>
         <div id="contenedor_carga">
             <div class="loader"></div> 
         </div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
-            <a class="navbar-brand" href="index.php" id="principal">Bella Sulamita</a>
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #E7B5E3" id="navbar">
+            <a class="navbar-brand" href="index.php" id="principal"><img src="multimedia/BellaSulamita.png"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -52,25 +54,22 @@ $produ = $producto->mostrarProducto($ide);
                 </ul>
                 <form class="form-inline my-2 my-lg-0" method="get" action="resultadoBusqueda.php">
                     <input style="width: 270px;" class="form-control mr-sm-2" type="search" placeholder="Elemento a buscar" name="busqueda">
-                    <input class="btn boton my-2 my-sm-0" type="submit" value="Buscar">
+                    <input class="btn btn-outline-light my-2 my-sm-0" type="submit" value="Buscar">
                 </form>
             </div>
         </nav>
 
 
 
-        <div id="producto" class="contenido">
-            <div class="container-fluid">
+        <div id="producto" class="contenido container-fluid">
+            <div class="container">
                 <div class="row">
-                    <div class="col-xl-5 col-lg-6 col-12 mt-5">
-                        <div class="img-zoom-container">
+                    <div class="col-xl-6 col-12 mt-5">
+                        <div class="img-magnifier-container img-fluid">
                             <img id="myimage" src="<?php echo $produ["imagen"] ?>" class="d-block w-100" alt="<?php echo $produ["nombre"] ?>">
                         </div>
                     </div>
-                    <div class="col-xl-3 col-lg-6 col-12 mt-5">
-                        <div id="myresult" class="img-zoom-result"></div>
-                    </div>
-                    <div class="col-xl-4 col-12 mt-5">
+                    <div class="col-xl-6 col-12 mt-5">
                         <h1 class="jumbotron-heading"><?php echo $produ["nombre"] ?></h1>
                         <h2 class="text-justify">COLOR:</h2><p><?php echo $produ["color"] ?></p>
                         <h2 class="text-justify">CATEGORIA:</h2><p><?php echo $produ["categoria"] ?></p>
@@ -112,7 +111,7 @@ $produ = $producto->mostrarProducto($ide);
                         <br>
                         <h1>QUIENES SOMOS</h1><br>
                         <p>
-                            La empresa está principalmente enfocada a la ropa femenina. La boutique fue creada en Octubre de 2008, con el lema 
+                            La empresa está principalmente enfocada a la ropa femenina. La boutique fue creada en Junio de 2016, con el lema 
                             "todo el mundo tiene derecho a disfrutar de la belleza de la moda".
                         </p>
                     </div>
@@ -141,7 +140,7 @@ $produ = $producto->mostrarProducto($ide);
             };
         </script>
         <script>
-            imageZoom("myimage", "myresult"); 
+            magnify("myimage", 3);
         </script>
         <!-- Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -27,8 +27,30 @@ class MCategoria extends BD {
             echo "Error: " . $e->getMessage();
         }
     }
-
-    public function consultarCategorias(){
+    
+//    public function consultarCategoriaAdmin(){
+//        try {
+//            $stmt = $this->conn->prepare("SELECT productos.*, categoria FROM productos inner join categoria on productos.id_categoria=categoria.id group by categoria order by productos.id");
+//            $stmt->execute();
+//            return $stmt->fetchAll();
+//           
+//        } catch (PDOException $e) {
+//            echo "Error: " . $e->getMessage();
+//        }
+//    }
+    
+    public function consultarCategoriasAdmin(){
+        try {
+            $stmt = $this->conn->prepare("SELECT * FROM categoria order by id desc");
+            $stmt->execute();
+            return $stmt->fetchAll();
+           
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+    
+    public function consultarCategoriasPrincipal(){
         try {
             $stmt = $this->conn->prepare("SELECT * FROM categoria order by id desc limit 6");
             $stmt->execute();

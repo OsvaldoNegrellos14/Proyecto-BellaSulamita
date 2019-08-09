@@ -2,9 +2,10 @@
 
 class MProducto extends BD {
     
-    public function agregarProducto($imagen,$nombre,$description,$precio,$marca,$color,$talla){
+    public function agregarProducto($categoria, $imagen, $nombre,$description,$precio,$marca,$color,$talla){
         try {
-            $stmt = $this->conn->prepare("insert into productos(imagen,nombre,description,precio,marca,color,talla) values (:imagen, :nombre, :description, :precio, :marca, :color, :talla)");
+            $stmt = $this->conn->prepare("insert into productos(id_categoria,imagen,nombre,description,precio,marca,color,talla) values (:id_categoria, :imagen, :nombre, :description, :precio, :marca, :color, :talla)");
+            $stmt->bindParam(':id_categoria', $categoria);
             $stmt->bindParam(':imagen', $imagen);
             $stmt->bindParam(':nombre', $nombre);
             $stmt->bindParam(':description', $description);
@@ -18,6 +19,30 @@ class MProducto extends BD {
             echo "Error: " . $e->getMessage();
         }
     }
+    
+//    public function consultarTodosPaginador(){
+//        try {
+//            $stmt = $this->conn->prepare("SELECT productos.*, categoria FROM productos inner join categoria on productos.id_categoria=categoria.id order by productos.id");
+//            $stmt->execute();
+//            return $stmt->fetchAll();
+//           
+//        } catch (PDOException $e) {
+//            echo "Error: " . $e->getMessage();
+//        }
+//    }
+//    
+//    public function consultarTodosPaginador2($startFrom, $showRecordPerPage){
+//        try {
+//            $stmt = $this->conn->prepare("SELECT productos.*, categoria FROM productos inner join categoria on productos.id_categoria=categoria.id order by productos.id limit :inicio, :final");
+//            $stmt->bindParam(':inicio', $startFrom);
+//            $stmt->bindParam(':final', $showRecordPerPage);
+//            $stmt->execute();
+//            return $stmt->fetchAll();
+//           
+//        } catch (PDOException $e) {
+//            echo "Error: " . $e->getMessage();
+//        }
+//    }
 
     public function consultaProducto($id) {
         try {
@@ -35,7 +60,20 @@ class MProducto extends BD {
 
     public function consultarProductos(){
         try {
-            $stmt = $this->conn->prepare("SELECT productos.*, categoria FROM productos inner join categoria on productos.id_categoria=categoria.id");
+            $stmt = $this->conn->prepare("SELECT productos.*, categoria FROM productos inner join categoria on productos.id_categoria=categoria.id order by productos.id");
+            $stmt->execute();
+            return $stmt->fetchAll();
+           
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+    
+    
+    
+    public function consultarProductosAdmin(){
+        try {
+            $stmt = $this->conn->prepare("SELECT productos.*, categoria FROM productos inner join categoria on productos.id_categoria=categoria.id order by productos.id desc");
             $stmt->execute();
             return $stmt->fetchAll();
            
@@ -102,12 +140,11 @@ class MProducto extends BD {
         }
     }
 
-    public function actualizarProducto($id, /*$id_categoria,*/ $imagen, $nombre, $description, $precio, $marca, $color, $talla){
+    public function actualizarProducto($id, $id_categoria, $imagen, $nombre, $description, $precio, $marca, $color, $talla){
         try {
-            $stmt = $this->conn->prepare("UPDATE productos set  imagen=:imagen, nombre=:nombre, description=:description, precio=:precio, marca=:marca, color=:color, talla=:talla where id=:id");
+            $stmt = $this->conn->prepare("UPDATE productos set id_categoria=:id_categoria, imagen=:imagen, nombre=:nombre, description=:description, precio=:precio, marca=:marca, color=:color, talla=:talla where id=:id");
             $stmt->bindParam(':id', $id);
-//            id_categoria=:id_categoria
-//            $stmt->bindParam(':id_categoria', $id_categoria);
+            $stmt->bindParam(':id_categoria', $id_categoria);
             $stmt->bindParam(':imagen', $imagen);
             $stmt->bindParam(':nombre', $nombre);
             $stmt->bindParam(':description', $description);

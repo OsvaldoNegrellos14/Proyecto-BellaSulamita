@@ -24,6 +24,7 @@ $producto = new CProducto();
 <html>
     <head>
         <title>Productos</title>
+        <link rel="shortcut icon" href="multimedia/BS.png" />
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap CSS -->
@@ -32,13 +33,17 @@ $producto = new CProducto();
         <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="style/css.css"/>
         <link rel="stylesheet" href="style/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+        <script src="js/main.js"></script>
+        <link rel="stylesheet" href="Style/cssZoom.css">
     </head>
     <body>
         <div id="contenedor_carga">
             <div class="loader"></div> 
         </div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
-            <a class="navbar-brand" href="index.php" id="principal">Bella Sulamita</a>
+        <button onclick="topFunction()" id="myBtn" title="Go to top">&uarr; volver</button>
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #E7B5E3" id="navbar">
+            <a class="navbar-brand" href="index.php" id="principal"><img src="multimedia/BellaSulamita.png"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -62,13 +67,13 @@ $producto = new CProducto();
                 </ul>
                 <form class="form-inline my-2 my-lg-0" method="get" action="resultadoBusqueda.php">
                     <input style="width: 270px;" class="form-control mr-sm-2" type="search" placeholder="Elemento a buscar" name="busqueda">
-                    <input class="btn boton my-2 my-sm-0" type="submit" value="Buscar">
+                    <input class="btn btn-outline-light my-2 my-sm-0" type="submit" value="Buscar">
                 </form>
             </div>
         </nav>
 
         <div class="contenido">
-            <h1>Productos disponibles</h1>
+            <br><h1>Productos disponibles</h1>
         </div>
         <div class="container-fluid">
             <div class="row">
@@ -99,8 +104,7 @@ $producto = new CProducto();
                                         <b>Categorias</b>
                                         <form method="post" action="products.php"><br>
                                             <?php
-                                            $valor = "categoria";
-                                            echo $producto->mostrarFiltro2($valor);
+                                              echo $cate = $categoria->mostrarCategoriasAdmin();
                                             ?>
                                             <br>
                                             <input class="btn boton" type="submit" value="Buscar" name="filtro2">
@@ -113,9 +117,9 @@ $producto = new CProducto();
                                     <div class="container" style="padding: 20px">
                                         <b>Color</b>
                                         <form method="post" action="products.php"><br>
-                                            //<?php
-//                                            echo $producto->mostrarFiltro3();
-//                                            ?>
+                                            <?php
+//                                              echo $producto->mostrarFiltro3();
+                                            ?>
                                             <br>
                                             <input class="btn boton" type="submit" value="Buscar" name="filtro3">
                                         </form>
@@ -199,7 +203,7 @@ $producto = new CProducto();
                         <br>
                         <h1>QUIENES SOMOS</h1><br>
                         <p>
-                            La empresa está principalmente enfocada a la ropa femenina. La boutique fue creada en Octubre de 2008, con el lema 
+                            La empresa está principalmente enfocada a la ropa femenina. La boutique fue creada en Junio de 2016, con el lema 
                             "todo el mundo tiene derecho a disfrutar de la belleza de la moda".
                         </p>
                     </div>

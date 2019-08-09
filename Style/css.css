@@ -1,21 +1,10 @@
 body *{
-    font-family: "Crimson Text",serif
+    font-family: 'Poppins', sans-serif;
 }
 
 header{
     text-align: center;
     font-size: 60px;
-}
-
-.boton{
-    color: #E7B5E3;
-    border-color: #E7B5E3;
-}
-
-.boton:hover{
-    color: #fff;
-    background-color: #E7B5E3;
-    border-color: #E7B5E3;
 }
 
 .contenido{
@@ -69,7 +58,7 @@ div ul li a{
 
 .linea hr{
     width: 100px;
-    border: 4px solid #E7B5E3;
+    border: 2.1px solid #E7B5E3;
     margin-left: auto;
     margin-right: auto;
 }
@@ -137,7 +126,7 @@ footer h1{
 }
 
 .container{
-    padding-bottom: 55px;
+    padding-bottom: 34px;
 }
 footer a{
     display: inline-block;
@@ -154,7 +143,7 @@ footer p{
 
 #producto .col-12 img, #producto .col-lg-6 img{
     width: 100%;
-    height: 550px;
+    height: auto;
 }
 
 
@@ -205,7 +194,6 @@ table, th, td{
 
 div h1{
     text-align: center;
-    font-size: 60px;
 
 }
 
@@ -329,4 +317,15 @@ body main {
     width:auto;
     height:auto;
     overflow:hidden;
+}
+
+.boton{
+    border-color: #E7B5E3;
+    background-color: white;
+    color: #E7B5E3;
+}
+
+.boton:hover{
+    background-color: #E7B5E3;
+    color: white;
 }

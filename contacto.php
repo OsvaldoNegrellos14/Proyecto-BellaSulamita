@@ -18,19 +18,20 @@ if (isset($_POST["nombre"]) && isset($_POST["telefono"]) && isset($_POST["asunto
         <title>Contacto</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        <link rel="shortcut icon" href="multimedia/BS.png" />
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
         <link rel="stylesheet" href="style/css.css"/>
         <link rel="stylesheet" href="style/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     </head>
     <body>
         <div id="contenedor_carga">
             <div class="loader"></div> 
         </div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
-            <a class="navbar-brand" href="index.php" id="principal">Bella Sulamita</a>
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #E7B5E3" id="navbar">
+            <a class="navbar-brand" href="index.php" id="principal"><img src="multimedia/BellaSulamita.png"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -54,7 +55,7 @@ if (isset($_POST["nombre"]) && isset($_POST["telefono"]) && isset($_POST["asunto
                 </ul>
                 <form class="form-inline my-2 my-lg-0" method="get" action="resultadoBusqueda.php">
                     <input style="width: 270px;" class="form-control mr-sm-2" type="search" placeholder="Elemento a buscar" name="busqueda">
-                    <input class="btn boton my-2 my-sm-0" type="submit" value="Buscar">
+                    <input class="btn btn-outline-light my-2 my-sm-0" type="submit" value="Buscar">
                 </form>
             </div>
         </nav>
@@ -68,6 +69,7 @@ if (isset($_POST["nombre"]) && isset($_POST["telefono"]) && isset($_POST["asunto
                         <h3 class="section-subheading text-muted">Envianos un mensaje dando tu opinion</h3>
                         <form method="post" action="contacto.php">
                             <div class="row mt-4">
+                                
                                 <div id="input" class="col-md-4 col-sm-12"><input type="text" placeholder="Ingrese su nombre" name="nombre"></div>
                                 <div id="input" class="col-md-4 col-sm-12"><input type="text" placeholder="Ingrese su teléfono" name="telefono"></div>
                                 <div id="input" class="col-md-4 col-sm-12"><input type="text" placeholder="Asunto" name="asunto"></div>
@@ -88,8 +90,20 @@ if (isset($_POST["nombre"]) && isset($_POST["telefono"]) && isset($_POST["asunto
                     </div>
                     <div class="col-lg-4 colmd-12" id="DatosContacto">
                         <br>
-                        <h2 class="section-heading">Dirección</h2>
-                        <p>Calle 4 Ote. 119, Centro de la Ciudad, 75700 Tehuacán, Puebla, México.</p>
+                        <h2 class="section-heading">Dirección</h2><br>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-2">
+                                    <i style="font-size: 40px" class="fa fa-map-marker"></i>
+                                </div>
+                                <div class="col-10">
+                                    <p> Calle 4 Ote. 119, Centro de la Ciudad, 75700 Tehuacán, Puebla, México.</p>
+                                </div>
+                                
+                            </div>
+                        </div>
+                            
+                        
                         <h2 class="section-heading">Ubicación</h2><br>
                         <div class="mapa">
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d946.1071729002789!2d-97.39195657081308!3d18.464231171282076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85c5bcd71c978045%3A0x6cfc6dd841de4794!2sCalle+3+Nte.+113%2C+Centro+de+la+Ciudad%2C+75700+Tehuac%C3%A1n%2C+Pue.!5e0!3m2!1ses-419!2smx!4v1564366786608!5m2!1ses-419!2smx" width="1000" height="650" frameborder="0" style="border:0" allowfullscreen></iframe>
@@ -123,8 +137,8 @@ if (isset($_POST["nombre"]) && isset($_POST["telefono"]) && isset($_POST["asunto
                     <br>
                     <h1>QUIENES SOMOS</h1><br>
                     <p>
-                        La empresa está principalmente enfocada a la ropa femenina. La boutique fue creada en Octubre de 2008, con el lema 
-                        "todo el mundo tiene derecho a disfrutar de la belleza de la moda".
+                        La empresa está principalmente enfocada a la ropa femenina. La boutique fue creada en Junio de 2016, con el lema 
+                            "todo el mundo tiene derecho a disfrutar de la belleza de la moda".
                     </p>
                 </div>
                 <div class="col-lg-4 col-md-12">

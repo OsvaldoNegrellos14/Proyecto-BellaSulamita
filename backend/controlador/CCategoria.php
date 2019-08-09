@@ -9,17 +9,55 @@ class CCategoria {
     }
 
     public function subirNuevaCategoria($categoria, $imagen) {
-        copy($imagen["tmp_name"], "../multimedia/".$imagen["name"]);
-        $this->modelo->agregarCategoria($categoria, "multimedia/".$imagen["name"]);
+        if (!empty($categoria) && !empty($imagen)) {
+            copy($imagen["tmp_name"], "../multimedia/".$imagen["name"]);
+            $this->modelo->agregarCategoria($categoria, "multimedia/".$imagen["name"]);
+            return $correcto = "<script>
+                                    Swal.fire({
+                                      type: 'success',
+                                      title: 'La categoria se ha guardado! ',
+                                      text: '¿Qué desea hacer?',
+                                      showCancelButton: true,
+                                      focusConfirm: false,
+                                      confirmButtonText:" .
+                                        "'<a href=".'"agregarCategoria.php"'.">Agregar categoria</a>',
+                                      cancelButtonText:" .
+                                        "'<a href=".'"tablaCategoria.php"'.">Ver las categorias</a>'
+                                    });
+                                </script>";
+            header("Location: agregarCategoria.php");
+        } else {
+            return $error = "<script>
+                            Swal.fire({
+                                type: 'error',
+                                title: 'Error!',
+                                text: 'Todos los campos deben de rellenarse',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                            </script>";
+            header("Location: agregarCategoria.php");
+        }
+        
     }
 
     public function mostrarCategoria($ide) {
         $categoria = $this->modelo->consultaCategoria($ide);
         return $categoria;
     }
+    
+    public function mostrarCategoriasAdmin(){
+        $producto = $this->modelo->consultarCategoriasAdmin();
+        $acu = "";
+        foreach ($producto as $produ){
+            $acu .= '<input type="radio" name="categoria" id="'.$produ["id"].'" value="'.$produ["id"].'">'
+                    . '<label for="'.$produ["id"].'"> '.$produ["categoria"].'</label><br>';
+        }
+        return $acu;
+    }
 
     public function mostrarTodasCategorias() {
-        $categoria = $this->modelo->consultarCategorias();
+        $categoria = $this->modelo->consultarTodas();
         $acu = "";
         foreach ($categoria as $catego) {
             $acu .= '<a class="dropdown-item" href="categoria.php?id='. $catego["id"] .'">'. $catego["categoria"] .'</a>';
@@ -28,7 +66,7 @@ class CCategoria {
     }
     
 
-//    public function mostrarCategoriasEditar() {
+//    public function mostrarCategoriasFiltro {
 //        $categoria = $this->modelo->consultarCategorias();
 //        $acu = "";
 //        foreach ($categoria as $catego) {
@@ -38,7 +76,7 @@ class CCategoria {
 //    }
     
     public function mostrarCategoriasPrincipal() {
-        $categoria = $this->modelo->consultarCategorias();
+        $categoria = $this->modelo->consultarCategoriasPrincipal();
         $acu = "";
         foreach ($categoria as $catego) {
             $acu .= '<div class="col-xl-4 col-lg-6">
@@ -80,7 +118,7 @@ class CCategoria {
     
 
     public function mostrarCategoriaAdmin() {
-        $categoria = $this->modelo->consultarCategorias();
+        $categoria = $this->modelo->consultarCategoriasAdmin();
         $acu = "";
         foreach ($categoria as $catego) {
             $acu .= '<tbody>
@@ -89,7 +127,7 @@ class CCategoria {
                             <th scope="row"><img style="width: auto; height: 80px" src="../' . $catego["imagen"] . '"></th>
                             <th scope="row"><h5>' . $catego["categoria"] . '</h5></th>
                             <td><button type="button" class="btn btn-primary"><a href="editarCategoria.php?id=' . $catego["id"] . '"><i class="fa fa-edit"></i></a></button></td>
-                            <td><button type="button" class="btn btn-primary"><a href="eliminarCategoria.php?id=' . $catego["id"] . '"><i class="fa fa-trash"></i></a></button></td>
+                            <td><button type="button" class="btn btn-danger"><a href="eliminarCategoria.php?id=' . $catego["id"] . '"><i class="fa fa-trash"></i></a></button></td>
 			</tr>
                     </tbody>';
         }
@@ -97,12 +135,24 @@ class CCategoria {
     }
 
     public function editarCategoria($id, $categoria, $imagen) {
-        copy($imagen["tmp_name"], "../multimedia/".$imagen["name"]);
-        $this->modelo->actualizarCategoria($id, $categoria, "multimedia/".$imagen["name"]);
+        $this->modelo->actualizarCategoria($id, $categoria, $imagen);
+        return $correcto = "<script>
+                                  Swal.fire({
+                                  title: 'Cambios hechos exitosamente! ',
+                                  type: 'success',
+                                  showConfirmButton: true,
+                                  confirmButtonText:" .
+                                        "'<a href=".'"tablaCategoria.php"'.">Continuar</a>'
+                                });
+                                </script>";
+        header("Location: editarCategoria.php");
+        
     }
 
     public function eliminarCategoria($id) {
         $this->modelo->borrarCategoria($id);
     }
+    
+    
 
 }

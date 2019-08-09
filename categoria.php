@@ -13,6 +13,7 @@ $ide = $_GET["id"];
 <html>
     <head>
         <title><?php echo $categoria->mostrarCategoria($ide)['categoria'] ?></title>
+        <link rel="shortcut icon" href="multimedia/BS.png" />
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap CSS -->
@@ -20,13 +21,14 @@ $ide = $_GET["id"];
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
         <link rel="stylesheet" href="style/css.css"/>
         <link rel="stylesheet" href="style/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     </head>
     <body>
         <div id="contenedor_carga">
             <div class="loader"></div> 
         </div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
-            <a class="navbar-brand" href="index.php" id="principal">Bella Sulamita</a>
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #E7B5E3" id="navbar">
+            <a class="navbar-brand" href="index.php" id="principal"><img src="multimedia/BellaSulamita.png"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -50,13 +52,13 @@ $ide = $_GET["id"];
                 </ul>
                 <form class="form-inline my-2 my-lg-0" method="get" action="resultadoBusqueda.php">
                     <input style="width: 270px;" class="form-control mr-sm-2" type="search" placeholder="Elemento a buscar" name="busqueda">
-                    <input class="btn boton my-2 my-sm-0" type="submit" value="Buscar">
+                    <input class="btn btn-outline-light my-2 my-sm-0" type="submit" value="Buscar">
                 </form>
             </div>
         </nav>
 
         <div class="contenido">
-            <h1>Productos relacionados</h1>
+            <br><h1>Productos relacionados</h1>
         </div>
 
         <div class="album py-5">
@@ -89,7 +91,7 @@ $ide = $_GET["id"];
                         <br>
                         <h1>QUIENES SOMOS</h1><br>
                         <p>
-                            La empresa está principalmente enfocada a la ropa femenina. La boutique fue creada en Octubre de 2008, con el lema 
+                            La empresa está principalmente enfocada a la ropa femenina. La boutique fue creada en Junio de 2016, con el lema 
                             "todo el mundo tiene derecho a disfrutar de la belleza de la moda".
                         </p>
                     </div>

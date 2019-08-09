@@ -1,27 +1,27 @@
 <?php
 include_once '../backend/modelo/BD.php';
-include_once '../backend/modelo/MCategoria.php';
-include_once '../backend/controlador/CCategoria.php';
-$categoria = new CCategoria();
+include_once '../backend/modelo/MAdmin.php';
+include_once '../backend/modelo/MContacto.php';
+include_once '../backend/controlador/CAdmin.php';
+include_once '../backend/controlador/CContacto.php';
+$formulario = new CContacto();
 session_start();
 if (!isset($_SESSION["autentificado"])) {
     header("Location: index.php");
 }
-if (isset($_POST["categoria"]) && isset($_FILES["imagen"])) {
-    $resultado = $categoria->subirNuevaCategoria($_POST["categoria"], $_FILES["imagen"]);
-    
-}
+
+$ide = (int) $_GET["id"];
+$form = $formulario->mostrarFormulario($ide);
 ?>
 
 <!DOCTYPE html>
 <html>
 
     <head>
-        <title>Agregar Categoria</title>
+        <title>Ver comentario</title>
         <link rel="shortcut icon" href="../multimedia/BS.png" />
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!--Sweet Alert-->
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -29,8 +29,6 @@ if (isset($_POST["categoria"]) && isset($_FILES["imagen"])) {
         <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="style/css_1.css" />
         <link rel="stylesheet" href="style/font-awesome.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8.15.2/dist/sweetalert2.all.min.js"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@8.15.2/dist/sweetalert2.css">
     </head>
 
     <body>
@@ -96,22 +94,21 @@ if (isset($_POST["categoria"]) && isset($_FILES["imagen"])) {
                 </nav>
 
                 <div class="container-fluid">
-                    <form action="agregarCategoria.php" method="POST" enctype="multipart/form-data">
-                        <br><h2>Categoria</h2>
-                        <div class="input-group mb-3">
-                            <input type="text" require name="categoria" class="form-control" aria-label="Sizing example input"
-                                   aria-describedby="inputGroup-sizing-default" placeholder="Nombre de la categoria">
+                    
+                    
+                    <div class="col-md-12 ">
+                        <div class="text-center">
+                            <br><h1>Comentario</h1>
                         </div>
-                        <p style="margin-bottom: 5px;">Subir archivo:</p>
-                        <input style="font-size: 12px" type="file" name="imagen" accept="image/*"><br><br>
-                        <?php 
-                        if(!empty($resultado)){
-                            echo $resultado;
-                        }
-                        ?>
-                        <button style="width: 100px" type="submit" class="btn btn-outline-success">Guardar</button><br><br>
-                        <button style="width: 100px" type="button" class="btn btn-outline-secondary"><a href="panel.php" style="text-decoration: none">Regresar</a></button>
-                    </form>
+                        <h3>Envia:</h3><p><?php echo $form["nombre"]?></p><hr>
+                        <h3>Número de contacto:</h3><p><?php echo $form["telefono"]?></p><hr>
+                        <h3>Asunto del mensaje:</h3><p><?php echo $form["asunto"]?></p><hr>
+                        <h3>Mensaje:</h3><p><?php echo $form["mensaje"]?></p><hr>
+                        <button style="width: 100px" type="button" class="btn btn-outline-danger"><a href="eliminarComentario.php?id=<?php echo $form["id"] ?>">Eliminar</a></button><br><br>
+                        <button style="width: 100px" type="button" class="btn btn-outline-secondary"><a href="tablaComentarios.php" style="text-decoration: none">Regresar</a></button>
+                    </div>
+                    
+                    
                 </div><br>
             </div>
         </div>
@@ -122,6 +119,7 @@ if (isset($_POST["categoria"]) && isset($_FILES["imagen"])) {
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
         <!-- Bootstrap JS -->
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
         <script type="text/javascript">
             $(document).ready(function () {
                 $('#sidebarCollapse').on('click', function () {
@@ -129,7 +127,8 @@ if (isset($_POST["categoria"]) && isset($_FILES["imagen"])) {
                 });
             });
         </script>
-        
+
+
     </body>
 
 </html>

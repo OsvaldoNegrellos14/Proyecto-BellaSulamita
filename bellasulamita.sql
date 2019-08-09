@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-08-2019 a las 20:43:38
+-- Tiempo de generación: 09-08-2019 a las 08:01:17
 -- Versión del servidor: 10.3.15-MariaDB
 -- Versión de PHP: 7.3.6
 
@@ -45,43 +45,13 @@ INSERT INTO `administrador` (`id`, `username`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `banner`
---
-
-CREATE TABLE `banner` (
-  `id` int(11) NOT NULL,
-  `titulo` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-  `descripcion` varchar(1000) COLLATE utf8_spanish_ci NOT NULL,
-  `imagen` varchar(600) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `banner`
---
-
-INSERT INTO `banner` (`id`, `titulo`, `descripcion`, `imagen`) VALUES
-(1, 'Invierno', 'Abrigos, suéteres', 'multimedia/invierno.jpeg'),
-(2, 'Primavera', 'Vestidos', 'multimedia/primavera.jpeg'),
-(3, 'Verano', 'Vestidos', 'multimedia/verano.jpeg'),
-(4, 'Trajes', 'Conjuntos, pantalones, sacos y más', 'multimedia/trajes.jpeg'),
-(5, 'Vestidos', 'Para cualquier ocasión', 'multimedia/vestidos.jpeg'),
-(6, 'Vestidos de gala', 'Lo más elegante', 'multimedia/gala.jpeg'),
-(7, 'Faldas', 'Para verano y primavera', 'multimedia/faldas.jpeg'),
-(8, 'Sudaderas', 'Sudaderas', 'multimedia/sudaderas.jpeg'),
-(9, 'Playeras y blusas', 'Diseños únicos', 'multimedia/playeras.jpeg'),
-(10, 'Pantalones', 'Pantalones de mezclilla y formales', 'multimedia/pantalones.jpeg'),
-(11, 'jvbkjbsvkjs', 'jfsvbkjsbvjdl', 'multimedia/abrigo5.jpg');
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `categoria`
 --
 
 CREATE TABLE `categoria` (
   `id` int(11) NOT NULL,
   `categoria` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-  `imagen` varchar(100) COLLATE utf8_spanish_ci NOT NULL
+  `imagen` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -240,7 +210,7 @@ INSERT INTO `productos` (`id`, `id_categoria`, `imagen`, `nombre`, `description`
 (98, 7, 'multimedia/blusa10.jpg', 'Blusa roja simple', 'Blusa roja simple', 200, 'Pepe Jeans', 'Rojo', 'Mediano'),
 (99, 7, 'multimedia/blusa11.jpg', 'Blusa Jovenes', 'Blusa blanca juvenil 2019', 560, 'Easy Wear', 'Blanco', 'Mediano'),
 (100, 7, 'multimedia/blusa12.jpg', 'Blusa Rayada', 'Blusa rayada sin mangas', 300, 'Fórmula Joven', 'Azul', 'Mediano'),
-(101, 7, 'multimedia/blusa13.jpg', 'Blusa Azul Milf', 'Blusa azul para señora', 459, 'Pepe Jeans', 'Azul', 'Mediano'),
+(101, 7, 'multimedia/blusa13.jpg', 'Blusa Azul', 'Blusa azul para seÃ±ora', 459, 'Pepe Jeans', 'Azul', 'Mediano'),
 (102, 7, 'multimedia/blusa14.jpg', 'Blusa cuello', 'Blusa casual blanca jovenes', 479, 'Kookai', 'Blanco', 'Mediano'),
 (103, 7, 'multimedia/blusa15.jpg', 'Blusa Rosa 2019', 'Blusa Lisa con listones', 220, 'Pepe Jeans', 'Rosa', 'Mediano');
 
@@ -274,12 +244,6 @@ INSERT INTO `slider` (`id`, `imagen`, `titulo`, `informacion`) VALUES
 -- Indices de la tabla `administrador`
 --
 ALTER TABLE `administrador`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `banner`
---
-ALTER TABLE `banner`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -318,34 +282,28 @@ ALTER TABLE `administrador`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `banner`
---
-ALTER TABLE `banner`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT de la tabla `formulario`
 --
 ALTER TABLE `formulario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 
 --
 -- AUTO_INCREMENT de la tabla `slider`
 --
 ALTER TABLE `slider`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Restricciones para tablas volcadas

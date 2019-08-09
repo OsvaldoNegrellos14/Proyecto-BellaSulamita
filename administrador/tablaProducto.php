@@ -15,7 +15,8 @@ if (!isset($_SESSION["autentificado"])) {
 <html>
 
     <head>
-        <title>Panel</title>
+        <title>Tabla Productos</title>
+        <link rel="shortcut icon" href="../multimedia/BS.png" />
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap CSS -->
@@ -32,12 +33,13 @@ if (!isset($_SESSION["autentificado"])) {
             <!-- Sidebar  -->
             <nav id="sidebar" class="">
                 <div class="sidebar-header">
-                    <h3><a href="panel.php">Bella Sulamita</a></h3>
+                    <a href="panel.php"><img src="../multimedia/BellaSulamita.png"></a>
                 </div>
 
                 <ul class="list-unstyled components">
                     <li class="active">
                         <a href="panel.php"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a>
+                        <br>
                         <a href="#submenu1"><i class="fa fa-plus" aria-hidden="true"></i> Agregar </a>
                         <div id="submenu1" aria-expanded="false">
                             <ul class="flex-column pl-2 nav">
@@ -58,13 +60,14 @@ if (!isset($_SESSION["autentificado"])) {
                                     <a class="nav-link py-1" href="tablaCategoria.php"> Categoria</a>
                                 </li>
                             </ul>
-                        </div>
+                        </div><br>
+                        <a href="tablaComentarios.php"><i class="fa fa-eye" aria-hidden="true"></i> Ver comentarios </a>
                     </li>
                 </ul>
             </nav>
 
             <!-- Page Content  -->
-            <div style="padding: 15px;" id="content">
+            <div style="padding: 15px; margin: 0px auto 0px auto;" id="content">
 
                 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                     <div class="container-fluid">
@@ -87,7 +90,7 @@ if (!isset($_SESSION["autentificado"])) {
                     </div>
                 </nav>
 
-                <div class="container">
+                <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card">
@@ -98,11 +101,11 @@ if (!isset($_SESSION["autentificado"])) {
                                                 <th scope="col">ID Producto</th>
                                                 <th scope="col">Imagen</th>
                                                 <th scope="col">Nombre del producto</th>
+                                                <th scope="col">Categoría</th>
                                                 <th scope="col">Tallas</th>
                                                 <th scope="col">Precio</th>
                                                 <th scope="col">Marca</th>
                                                 <th scope="col">Color</th>
-                                                <th scope="col">Descripción</th>
                                                 <th scope="col">Editar</th>
                                                 <th scope="col">Eliminar</th>
                                             </tr>

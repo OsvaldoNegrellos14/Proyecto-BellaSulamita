@@ -13,9 +13,15 @@ class CAdmin {
             $_SESSION["autentificado"]=$user;
             header("Location: panel.php");
         }else{
-            return $error = "<div class='alert alert-danger'>
-                                <strong>Error!</strong> Usuario o contraseña invalidos.
-                            </div>";
+            return $error = "<script>
+                            Swal.fire({
+                                type: 'error',
+                                title: 'Error!',
+                                text: 'Usuario y contraseña incorrectos',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                            </script>";
             header("Location: index.php");
 
         }

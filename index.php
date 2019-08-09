@@ -18,6 +18,7 @@ $producto = new CProducto();
 <html>
     <head>
         <title>Bella Sulamita</title>
+        <link rel="shortcut icon" href="multimedia/BS.png" />
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap CSS -->
@@ -25,7 +26,7 @@ $producto = new CProducto();
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
         <link rel="stylesheet" href="style/css.css"/>
         <link rel="stylesheet" href="style/font-awesome.min.css">
-        <link href="https://fonts.googleapis.com/css?family=Crimson+Text&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     </head>
     <body>
         <!--animacion_carga-->
@@ -36,8 +37,9 @@ $producto = new CProducto();
         
         
         <!--barra de navegacion-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
-            <a class="navbar-brand" href="index.php" id="principal">Bella Sulamita</a>
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #E7B5E3" id="navbar">
+            <a class="navbar-brand" href="index.php" id="principal"><img src="multimedia/BellaSulamita.png"></a>
+            
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -61,7 +63,7 @@ $producto = new CProducto();
                 </ul>
                 <form class="form-inline my-2 my-lg-0" method="get" action="resultadoBusqueda.php">
                     <input style="width: 270px;" class="form-control mr-sm-2" type="search" placeholder="Elemento a buscar" name="busqueda">
-                    <input class="btn boton my-2 my-sm-0" type="submit" value="Buscar">
+                    <input class="btn btn-outline-light my-2 my-sm-0" type="submit" value="Buscar">
                 </form>
             </div>
         </nav>
@@ -115,8 +117,14 @@ $producto = new CProducto();
         <!--categorias-->
         <section style="padding-top: 100px;">
             <div class="mt-5 " style="padding-bottom: 10px;">
-                <div class="parallax linea " style="text-align: center">
-                    <h1 style="background-color: black; opacity: 0.3; color: white">Categorias</h1>
+                <div class="linea " style="text-align: center">
+                    <div class="row d-flex align-items-center">
+                        <hr style="width: 300px">
+                        <h1><strong>CATEGORIAS</strong></h1>
+                        <hr style="width: 300px">
+                    </div>
+                    <br>
+                    <p style="font-size: 16px; width: 600px; margin-left: auto; margin-right: auto;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                     <hr>
                 </div>
             </div>
@@ -136,8 +144,15 @@ $producto = new CProducto();
         
         <!--productos-->
         <div style="padding-top: 100px;" class="album mt-5">
-            <div class="parallax linea">
-                <h1 style="background-color: black; opacity: 0.3; color: white">Lo Más Nuevo</h1>
+            <div class="linea" style="text-align: center;">
+                <div class="row d-flex align-items-center">
+                    <hr style="width: 300px">
+                    <h1><strong>ÚLTIMAS TENDENCIAS</strong></h1>
+                    <hr style="width: 300px">
+                </div>
+                
+                <br>
+                <p style="font-size: 16px; width: 600px; margin-left: auto; margin-right: auto;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 <hr>
             </div>
             <div class="container">
@@ -174,7 +189,7 @@ $producto = new CProducto();
                         <br>
                         <h1>QUIENES SOMOS</h1><br>
                         <p>
-                            La empresa está principalmente enfocada a la ropa femenina. La boutique fue creada en Octubre de 2008, con el lema 
+                            La empresa está principalmente enfocada a la ropa femenina. La boutique fue creada en Junio de 2016, con el lema 
                             "todo el mundo tiene derecho a disfrutar de la belleza de la moda".
                         </p>
                     </div>
@@ -189,10 +204,9 @@ $producto = new CProducto();
                 </div><br>
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
-                        <P>©2019 BELLA SULAMITA Todos los derechos reservados</P
+                        <P>©2019 BELLA SULAMITA Todos los derechos reservados</P>
                     </div>
                 </div>
-
             </div>
         </footer>
         <!--footer-->

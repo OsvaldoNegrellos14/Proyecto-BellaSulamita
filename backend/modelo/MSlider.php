@@ -31,7 +31,7 @@ class MSlider extends BD {
 
     public function consultarSliders(){
         try {
-            $stmt = $this->conn->prepare("SELECT * FROM slider");
+            $stmt = $this->conn->prepare("SELECT * FROM slider order by id desc");
             $stmt->execute();
             return $stmt->fetchAll();
            

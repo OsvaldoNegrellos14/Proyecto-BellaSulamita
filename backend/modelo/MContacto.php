@@ -43,7 +43,7 @@ class MContacto  extends BD{
     
     public function borrarFormulario($id) {
         try {
-            $stmt = $this->conn->prepare("DELETE FROM categoria where id=:id");
+            $stmt = $this->conn->prepare("DELETE FROM formulario where id=:id");
             $stmt->bindParam(':id', $id);
             return $stmt->execute();
            

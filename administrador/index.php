@@ -18,6 +18,7 @@ if (isset($_SESSION["autentificado"])) {
 <html>
     <head>
         <title>Bella Sulamita</title>
+        <link rel="shortcut icon" href="../multimedia/BS.png" />
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -28,14 +29,14 @@ if (isset($_SESSION["autentificado"])) {
         <link rel="stylesheet" href="../Style/font-awesome.min.css">
         <link rel="stylesheet" href="../Style/cssLog.css"/>
         <link rel="stylesheet" href="../Style/css2.css"/>
-        <link rel="stylesheet" href="../Style/css3.css"/>
-        <link rel="stylesheet" href="../Style/css4.css"/>
-        <link rel="stylesheet" href="../Style/font-awesome.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8.15.2/dist/sweetalert2.all.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@8.15.2/dist/sweetalert2.css">
+        <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     </head>
     <body>
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="index.php">Bella Sulamita</a>
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #E7B5E3; display: flex; justify-content: center;">
+            <a href="panel.php"><img height="60px" src="../multimedia/BellaSulamita.png"></a>
 
         </nav>
 
@@ -94,20 +95,6 @@ if (isset($_SESSION["autentificado"])) {
         -->
 
 
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <br>
-                        <h2>Síguenos en</h2>
-                        <a href="#"><i class="fa fa-facebook fa-3x"></i></a>
-                        <a href="#"><i class="fa fa-twitter fa-3x"></i></a>
-                        <a href="#"><i class="fa fa-instagram fa-3x"></i></a>
-                        <a href="#"><i class="fa fa-snapchat-ghost fa-3x"></i></a>
-                    </div>
-                </div>
-            </div>
-        </footer>
 
         <script>
             $("#btnLogin").click(function (event) {
