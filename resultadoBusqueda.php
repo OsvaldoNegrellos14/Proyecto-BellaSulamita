@@ -64,7 +64,7 @@ if (empty($busqueda)) {
 
 
         <div class="contenido">
-            <h1>Productos Relacionados</h1>
+            <br><h1>Coincidencias con <strong style="color: red"><?php echo $busqueda?></strong></h1>
         </div>
         <div class="album mt-5">
             <div class="container">

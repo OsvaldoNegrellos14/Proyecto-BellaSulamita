@@ -62,7 +62,7 @@ $producto = new CProducto();
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0" method="get" action="resultadoBusqueda.php">
-                    <input style="width: 270px;" class="form-control mr-sm-2" type="search" placeholder="Elemento a buscar" name="busqueda">
+                    <input style="width: 270px;" class="form-control mr-sm-2" type="search" placeholder="Producto a buscar" name="busqueda">
                     <input class="btn btn-outline-light my-2 my-sm-0" type="submit" value="Buscar">
                 </form>
             </div>
@@ -85,7 +85,7 @@ $producto = new CProducto();
                     <?php $cnt = 0;foreach ($images as $img): ?>
                         <div class="carousel-item <?php if($cnt==0){ echo 'active'; }?>">
                             <img src="<?php echo $img["imagen"] ?>" class="img-slider d-block w-100">
-                            <div class="carousel-caption d-none d-md-block" style="background-color: black; opacity: 0.3">
+                            <div class="carousel-caption d-none d-md-block col-md-12" style="-webkit-text-stroke: 1px black; left: auto; right: auto">
                                 <h5><?php echo $img["titulo"] ?></h5>
                                 <p><?php echo $img["informacion"] ?></p>
                             </div>
@@ -119,12 +119,21 @@ $producto = new CProducto();
             <div class="mt-5 " style="padding-bottom: 10px;">
                 <div class="linea " style="text-align: center">
                     <div class="row d-flex align-items-center">
-                        <hr style="width: 300px">
-                        <h1><strong>CATEGORIAS</strong></h1>
-                        <hr style="width: 300px">
+                        <div class="col-md-4 col-12">
+                            <hr style="width: 50%">
+                        </div>
+                        <div class="col-md-4 col-12">
+                            <h1><strong>CATEGORIAS</strong></h1>
+                        </div>
+                        <div class="col-md-4 col-12">
+                            <hr style="width: 50%">
+                        </div>
                     </div>
                     <br>
-                    <p style="font-size: 16px; width: 600px; margin-left: auto; margin-right: auto;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <div>
+                        <p style="font-size: 16px; width: 60%; margin-left: auto; margin-right: auto;">Conoce nuestra extensa gama de productos que estan pensadas para cualquier ocasión.</p>
+                    </div>
+                    
                     <hr>
                 </div>
             </div>
@@ -146,13 +155,21 @@ $producto = new CProducto();
         <div style="padding-top: 100px;" class="album mt-5">
             <div class="linea" style="text-align: center;">
                 <div class="row d-flex align-items-center">
-                    <hr style="width: 300px">
-                    <h1><strong>ÚLTIMAS TENDENCIAS</strong></h1>
-                    <hr style="width: 300px">
+                    <div class="col-md-4 col-12">
+                        <hr style="width: 50%">
+                    </div>
+                    <div class="col-md-4 col-12">
+                        <h1><strong>ÚLTIMAS TENDENCIAS</strong></h1>
+                    </div>
+                    <div class="col-md-4 col-12">
+                        <hr style="width: 50%">
+                    </div>
+                </div>
+                <br>
+                <div>
+                    <p style="font-size: 16px; width: 60%; margin-left: auto; margin-right: auto;">Los mejores artículos elegidos para tí que te haran lucir espectacular en todo momento.</p>
                 </div>
                 
-                <br>
-                <p style="font-size: 16px; width: 600px; margin-left: auto; margin-right: auto;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 <hr>
             </div>
             <div class="container">
@@ -211,7 +228,7 @@ $producto = new CProducto();
         </footer>
         <!--footer-->
         <script>
-        window.onload = function() {
+        window.onload = function () {
             var contenedor = document.getElementById('contenedor_carga');
             contenedor.style.visibility = 'hidden';
             contenedor.style.opacity = '0';

@@ -199,6 +199,82 @@ class CProducto {
         $this->modelo->borrarProducto($id);
     }
     
+    public function mostrarFiltro1($minimo, $maximo){
+        $producto= $this->modelo->consultarFiltroValores($minimo, $maximo);
+        $acu="";
+        foreach ($producto as $produ){
+            $acu .= '<div class="col-xl-4 col-lg-6 col-sm-12">
+                        <div id="productos" class="card mb-4 shadow-sm">
+                            <a href="product.php?id='.$produ["id"].'"><img src="'.$produ["imagen"].'" class="card-img-top" alt="..."></a>
+                            <div class="card-body">
+                                <h4 class="card-title">'.substr($produ["nombre"],0,18).'...</h4>
+                                <p class="card-text">'.substr($produ["description"],0,30).'...</p>
+                                <div >
+                                        <div class="row">
+                                            <div class="col-6 d-flex justify-content-center align-items-center"><h5>$'. $produ["precio"] .'.00</h5></div>
+                                            <div class="col-6"><a class="bot" href="product.php?id='.$produ["id"].'" class="btn btn-primary my-2">Ver Más</a></div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>';
+        }
+        return $acu;
+    }
     
+    public function mostrarFiltroTodos($valor){
+        $producto= $this->modelo->consultarFiltroValores2($valor);
+        $acu="";
+        foreach ($producto as $produ){
+            $acu .= '<div class="col-xl-4 col-lg-6 col-sm-12">
+                        <div id="productos" class="card mb-4 shadow-sm">
+                            <a href="product.php?id='.$produ["id"].'"><img src="'.$produ["imagen"].'" class="card-img-top" alt="..."></a>
+                            <div class="card-body">
+                                <h4 class="card-title">'.substr($produ["nombre"],0,18).'...</h4>
+                                <p class="card-text">'.substr($produ["description"],0,30).'...</p>
+                                <div >
+                                        <div class="row">
+                                            <div class="col-6 d-flex justify-content-center align-items-center"><h5>$'. $produ["precio"] .'.00</h5></div>
+                                            <div class="col-6"><a class="bot" href="product.php?id='.$produ["id"].'" class="btn btn-primary my-2">Ver Más</a></div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>';
+        }
+        return $acu;
+    }
+    
+    public function mostrarFiltro3(){
+        $producto= $this->modelo->consultarFiltroMarcas();
+        $acu="";
+        foreach ($producto as $produ){
+            $acu .='<a class="dropdown-item" href="?marca='.$produ["marca"].'" value="'.$produ["marca"].'">'.$produ["marca"].'</a>';
+        }
+        return $acu;
+    }
+
+    public function mostrarPorMarca($marca){
+        $producto=$this->modelo->consultarPorMarca($marca);
+        $acu='';
+        foreach ($producto as $produ){
+            $acu .= '<div class="col-xl-4 col-lg-6 col-sm-12">
+                        <div id="productos" class="card mb-4 shadow-sm">
+                            <a href="product.php?id='.$produ["id"].'"><img src="'.$produ["imagen"].'" class="card-img-top" alt="..."></a>
+                            <div class="card-body">
+                                <h4 class="card-title">'.substr($produ["nombre"],0,18).'...</h4>
+                                <p class="card-text">'.substr($produ["description"],0,30).'...</p>
+                                <div >
+                                        <div class="row">
+                                            <div class="col-6 d-flex justify-content-center align-items-center"><h5>$'. $produ["precio"] .'.00</h5></div>
+                                            <div class="col-6"><a class="bot" href="product.php?id='.$produ["id"].'" class="btn btn-primary my-2">Ver Más</a></div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>';
+        }return $acu;
+    }
+
 
 }

@@ -50,31 +50,19 @@ class CCategoria {
         $producto = $this->modelo->consultarCategoriasAdmin();
         $acu = "";
         foreach ($producto as $produ){
-            $acu .= '<input type="radio" name="categoria" id="'.$produ["id"].'" value="'.$produ["id"].'">'
-                    . '<label for="'.$produ["id"].'"> '.$produ["categoria"].'</label><br>';
+            $acu .= '<a class="dropdown-item" href="?category='.$produ["categoria"].'" value="'.$produ["categoria"].'">'.$produ["categoria"].'</a>';;
         }
         return $acu;
     }
-
+        
     public function mostrarTodasCategorias() {
         $categoria = $this->modelo->consultarTodas();
         $acu = "";
         foreach ($categoria as $catego) {
-            $acu .= '<a class="dropdown-item" href="categoria.php?id='. $catego["id"] .'">'. $catego["categoria"] .'</a>';
+            $acu .= '<a class="dropdown-item" href="categoria.php?id=' . $catego["id"] . '">' . $catego["categoria"] . '</a>';
         }
-        return $acu;
     }
-    
 
-//    public function mostrarCategoriasFiltro {
-//        $categoria = $this->modelo->consultarCategorias();
-//        $acu = "";
-//        foreach ($categoria as $catego) {
-//            $acu .= '<a class="dropdown-item" href="categoria.php?id='. $catego["id"] .'">'. $catego["categoria"] .'</a>';
-//        }
-//        return $acu;
-//    }
-    
     public function mostrarCategoriasPrincipal() {
         $categoria = $this->modelo->consultarCategoriasPrincipal();
         $acu = "";

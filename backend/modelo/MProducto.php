@@ -94,15 +94,7 @@ class MProducto extends BD {
         }
     }
     
-//    public function consultarProductosPaginador(){
-//        try {
-//            $stmt = $this->conn->prepare("SELECT count(*) as total_registro FROM productos ");
-//            return $stmt->execute();
-//           
-//        } catch (PDOException $e) {
-//            echo "Error: " . $e->getMessage();
-//        }
-//    }
+
     
     public function consultarProductosPrincipal(){
         try {
@@ -184,5 +176,54 @@ class MProducto extends BD {
             echo "Error: " . $e->getMessage();
         }
     }
+    
+    public function consultarFiltroValores($minimo, $maximo){
+        try {
+            $stmt = $this->conn->prepare("SELECT * FROM productos where precio between :minimo and :maximo order by precio asc");
+            $stmt->bindParam(':minimo', $minimo);
+            $stmt->bindParam(':maximo', $maximo);
+            $stmt->execute();
+            return $stmt->fetchAll();
+           
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }    
+    
+    public function consultarFiltroValores2($valor){
+        try {
+            $stmt = $this->conn->prepare("SELECT productos.* FROM categoria inner join productos on categoria.id = productos.id_categoria where categoria.categoria = :valor");
+            $stmt->bindParam(':valor', $valor);
+            $stmt->execute();
+            return $stmt->fetchAll();
+           
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    } 
+    
+    public function consultarPorMarca($marca){
+        try{
+            $stmt=$this->conn->prepare("SELECT * from productos where marca=:marca");
+            $stmt->bindParam(':marca',$marca);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (PDOException $e){
+            echo "Error: ".$e->getMessage();
+        }
+    }
+    
+    public function consultarFiltroMarcas(){
+        try {
+            $stmt = $this->conn->prepare("SELECT marca from productos group by marca");
+            $stmt->execute();
+            return $stmt->fetchAll();
+           
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+    
+    
     
 }

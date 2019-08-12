@@ -329,3 +329,10 @@ body main {
     background-color: #E7B5E3;
     color: white;
 }
+
+
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
