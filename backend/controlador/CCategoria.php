@@ -61,6 +61,7 @@ class CCategoria {
         foreach ($categoria as $catego) {
             $acu .= '<a class="dropdown-item" href="categoria.php?id=' . $catego["id"] . '">' . $catego["categoria"] . '</a>';
         }
+        return $acu;
     }
 
     public function mostrarCategoriasPrincipal() {
