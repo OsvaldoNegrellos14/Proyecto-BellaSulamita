@@ -101,7 +101,7 @@ if(isset($_FILES["imagen"]) && isset($_POST["nombre"]) && isset($_POST["descript
 
                 <div class="container-fluid">
                     <form action="AgregarProducto.php" method="POST" enctype="multipart/form-data">
-                        <br><h2>Productos</h2>
+                        <br><h2>Nuevo producto</h2>
 
                         <div class="input-group mb-3">
                             <input type="text" require name="nombre" class="form-control" aria-label="Sizing example input"
@@ -131,13 +131,13 @@ if(isset($_FILES["imagen"]) && isset($_POST["nombre"]) && isset($_POST["descript
                         <div class="input-group mb-3">
                             <textarea style="height: 100px; width: 100%" class="form-control"
                                       aria-label="Sizing example input" require name="description"
-                                      aria-describedby="inputGroup-sizing-default" placeholder="Descripcion completa del producto"></textarea>
+                                      aria-describedby="inputGroup-sizing-default" placeholder="Descripción completa del producto"></textarea>
                         </div>
                         
                         <div class="row">
                             <div class="col-lg-6 col-sm-12">
-                                <p style="margin-bottom: 5px;">Categoria:</p>
-                                <?php echo $categoria->mostrarCategoriasAdmin(); ?>
+                                <p style="margin-bottom: 5px;">Categoría:</p>
+                                <?php echo $categoria->mostrarCategoriasAdminA(); ?>
                             </div>
                             <div class="col-lg-6 col-sm-12">
                                 <p style="margin-bottom: 5px;">Subir archivo:</p>

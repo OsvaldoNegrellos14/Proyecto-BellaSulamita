@@ -100,9 +100,9 @@ if (!isset($_SESSION["autentificado"])) {
                                             <tr>
                                                 <th scope="col">ID Comentario</th>
                                                 <th scope="col">Nombre del emisor</th>
-                                                <th scope="col">Telefono</th>
+                                                <th scope="col">Teléfono</th>
                                                 <th scope="col">Asunto</th>
-                                                <th scope="col">Asunto</th>
+                                                <th scope="col">Mensaje</th>
                                                 <th scope="col">Ver Más</th>
                                                 <th scope="col">Eliminar</th>
                                             </tr>

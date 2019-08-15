@@ -95,7 +95,7 @@ if (isset($_FILES["imagen"]) && isset($_POST["titulo"]) && isset($_POST["informa
 
                 <div class="container-fluid">
                     <form action="agregarSlider.php" method="POST" enctype="multipart/form-data">
-                        <br><h2>Slider</h2>
+                        <br><h2>Nuevo slider</h2>
 
                         <div class="input-group mb-3">
                             <input type="text" require name="titulo" class="form-control" aria-label="Sizing example input"

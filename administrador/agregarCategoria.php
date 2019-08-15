@@ -97,10 +97,10 @@ if (isset($_POST["categoria"]) && isset($_FILES["imagen"])) {
 
                 <div class="container-fluid">
                     <form action="agregarCategoria.php" method="POST" enctype="multipart/form-data">
-                        <br><h2>Categoria</h2>
+                        <br><h2>Nueva categoria</h2>
                         <div class="input-group mb-3">
                             <input type="text" require name="categoria" class="form-control" aria-label="Sizing example input"
-                                   aria-describedby="inputGroup-sizing-default" placeholder="Nombre de la categoria">
+                                   aria-describedby="inputGroup-sizing-default" placeholder="Nombre de la categoría">
                         </div>
                         <p style="margin-bottom: 5px;">Subir archivo:</p>
                         <input style="font-size: 12px" type="file" name="imagen" accept="image/*"><br><br>

@@ -43,7 +43,7 @@ if (!isset($_SESSION["autentificado"])) {
                             <li class="nav-item">
                                 <a class="nav-link py-1" href="agregarProducto.php">Producto</a>
                                 <a class="nav-link py-1" href="agregarSlider.php">Slider</a>
-                                <a class="nav-link py-1" href="agregarCategoria.php">Categoria</a>
+                                <a class="nav-link py-1" href="agregarCategoria.php">Categoría</a>
                             </li>
                         </ul>
                     </div><br>
@@ -54,7 +54,7 @@ if (!isset($_SESSION["autentificado"])) {
                             <li class="nav-item">
                                 <a class="nav-link py-1" href="tablaProducto.php"> Producto</a>
                                 <a class="nav-link py-1" href="tablaSlider.php"> Slider</a>
-                                <a class="nav-link py-1" href="tablaCategoria.php"> Categoria</a>
+                                <a class="nav-link py-1" href="tablaCategoria.php"> Categoría</a>
                             </li>
                         </ul>
                     </div><br>
@@ -92,7 +92,7 @@ if (!isset($_SESSION["autentificado"])) {
                     <div class="card bg-light">
                         <div class="card-body">
                             <h5 class="card-title">Agregar un nuevo producto</h5>
-                            <p class="card-text">Desde esta pestaña podras agregar un nuevo producto con sus caracteristicas.</p>
+                            <p class="card-text">Desde esta pestaña podras agregar un nuevo producto con sus características.</p>
                             <a href="agregarProducto.php" class="btn option">Agregar</a>
                         </div>
                     </div>
@@ -109,8 +109,8 @@ if (!isset($_SESSION["autentificado"])) {
                 <div class="col-xl-4 col-lg-6 col-sm-12">
                     <div class="card bg-light">
                         <div class="card-body">
-                            <h5 class="card-title">Agregar una nueva categoria</h5>
-                            <p class="card-text">Desde esta pestaña podras agregar una nueva categoria.</p>
+                            <h5 class="card-title">Agregar una nueva categoría</h5>
+                            <p class="card-text">Desde esta pestaña podrás agregar una nueva categoría.</p>
                             <a href="agregarCategoria.php" class="btn option">Agregar</a>
                         </div>
                     </div>
@@ -121,7 +121,7 @@ if (!isset($_SESSION["autentificado"])) {
                     <div class="card bg-light">
                         <div class="card-body">
                             <h5 class="card-title">Ver los productos existentes</h5>
-                            <p class="card-text">En este apartado observarás los producto existentes, podras editarlos y eliminarlos.</p>
+                            <p class="card-text">En este apartado observarás los producto existentes, podrás editarlos y eliminarlos.</p>
                             <a href="tablaProducto.php" class="btn option">Ver productos</a>
                         </div>
                     </div>
@@ -130,7 +130,7 @@ if (!isset($_SESSION["autentificado"])) {
                     <div class="card bg-light">
                         <div class="card-body">
                             <h5 class="card-title">Ver los sliders disponibles</h5>
-                            <p class="card-text">Este apartado podras administrar tus slider existentes, editarlos y eliminarlos.</p>
+                            <p class="card-text">Este apartado podras administrar los sliders existentes, editarlos y eliminarlos.</p>
                             <a href="tablaSlider.php" class="btn option">Ver sliders</a>
                         </div>
                     </div>
@@ -138,9 +138,9 @@ if (!isset($_SESSION["autentificado"])) {
                 <div class="col-xl-4 col-lg-6 col-sm-12">
                     <div class="card bg-light">
                         <div class="card-body">
-                            <h5 class="card-title">Ver las categorias disponibles</h5>
-                            <p class="card-text">Este apartado administrarás las categorias existentes, editarlos y eliminarlos.</p>
-                            <a href="tablaCategoria.php" class="btn option">Ver categorias</a>
+                            <h5 class="card-title">Ver las categorías disponibles</h5>
+                            <p class="card-text">Este apartado administrarás las categorías existentes, editarlas y eliminarlás.</p>
+                            <a href="tablaCategoria.php" class="btn option">Ver categorías</a>
                         </div>
                     </div>
                 </div> 

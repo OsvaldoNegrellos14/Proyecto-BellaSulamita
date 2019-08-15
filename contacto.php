@@ -6,9 +6,14 @@ include_once './backend/controlador/CContacto.php';
 include_once './backend/controlador/CCategoria.php';
 $contacto = new CContacto();
 $categoria = new CCategoria();
-if (isset($_POST["nombre"]) && isset($_POST["telefono"]) && isset($_POST["asunto"]) && isset($_POST["mensaje"])) {
-    $contacto->subirComentarioNuevo($_POST["nombre"], $_POST["telefono"], $_POST["asunto"], $_POST["mensaje"]);
+if (isset($_POST["nombre"]) && isset($_POST["asunto"]) && isset($_POST["mensaje"])) {
+    if(filter_var($_POST["telefono"], FILTER_VALIDATE_INT )){
+        $contacto->subirComentarioNuevo($_POST["nombre"], $_POST["telefono"], $_POST["asunto"], $_POST["mensaje"]);
     header("Location: contacto.php");
+    } 
+    $resultado = '<br><div class="alert alert-danger" role="alert">
+    ¡Error verifíque que los campos sean válidos!
+  </div>';
 }
 ?>
 
@@ -27,11 +32,11 @@ if (isset($_POST["nombre"]) && isset($_POST["telefono"]) && isset($_POST["asunto
         <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     </head>
     <body>
-        <div id="contenedor_carga">
-            <div class="loader"></div> 
-        </div>
+        
+        
         <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #E7B5E3" id="navbar">
             <a class="navbar-brand" href="index.php" id="principal"><img src="multimedia/BellaSulamita.png"></a>
+            
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -40,7 +45,7 @@ if (isset($_POST["nombre"]) && isset($_POST["telefono"]) && isset($_POST["asunto
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Categorias
+                            Categorías
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <?php echo $categoria->mostrarTodasCategorias() ?>
@@ -49,30 +54,31 @@ if (isset($_POST["nombre"]) && isset($_POST["telefono"]) && isset($_POST["asunto
                     <li class="nav-item">
                         <a class="nav-link" href="products.php">Nuestros Productos<span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="contacto.php">Contacto</a>
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0" method="get" action="resultadoBusqueda.php">
-                    <input style="width: 270px;" class="form-control mr-sm-2" type="search" placeholder="Elemento a buscar" name="busqueda">
+                    <input style="width: 270px;" class="form-control mr-sm-2" type="search" placeholder="Producto..." name="busqueda">
                     <input class="btn btn-outline-light my-2 my-sm-0" type="submit" value="Buscar">
                 </form>
             </div>
         </nav>
-
+        <br>
         <div class="galeria contenido">
             <div class="container formulario mt-5">
                 <div class="row">
                     <div class="col-lg-8 col-md-12">
                         <br>
                         <h2 class="section-heading">Contáctanos</h2>
-                        <h3 class="section-subheading text-muted">Envianos un mensaje dando tu opinion</h3>
+                        <h3 class="section-subheading text-muted">Envíanos un mensaje dando tu opinión</h3>
                         <form method="post" action="contacto.php">
                             <div class="row mt-4">
                                 
                                 <div id="input" class="col-md-4 col-sm-12"><input type="text" placeholder="Ingrese su nombre" name="nombre"></div>
                                 <div id="input" class="col-md-4 col-sm-12"><input type="text" placeholder="Ingrese su teléfono" name="telefono"></div>
                                 <div id="input" class="col-md-4 col-sm-12"><input type="text" placeholder="Asunto" name="asunto"></div>
+                               
                             </div>
                             <div class="row">
                                 <div class="col-12">
@@ -84,8 +90,13 @@ if (isset($_POST["nombre"]) && isset($_POST["telefono"]) && isset($_POST["asunto
                                         <input id="sendMessageButton" class="btn btn-md text-uppercase" type="submit" value="Enviar Mensaje">
                                     </div>
                                 </div>
-
                             </div>
+                            <?php 
+                                if(isset($resultado)){
+                                    echo $resultado;
+                                }
+
+                            ?>
                         </form>
                     </div>
                     <div class="col-lg-4 colmd-12" id="DatosContacto">
@@ -116,7 +127,9 @@ if (isset($_POST["nombre"]) && isset($_POST["telefono"]) && isset($_POST["asunto
 
         </div>
     </div>
-
+    <br>
+    <br>
+    
 
     <footer>
         <div class="container">
@@ -146,7 +159,7 @@ if (isset($_POST["nombre"]) && isset($_POST["telefono"]) && isset($_POST["asunto
                     <h1>NUESTRA MISIÓN</h1><br>
                     <P>
                         BELLA SULAMITA ofrece las últimas tendencias para mujeres, a unos precios más que atractivos. 
-                        El objetivo es ofrecer productos de calidad con estilo, a precios atractivos para todos los usuarios del mundo.
+                        El objetivo es ofrecer productos de calidad con estilo, para todos las personas del mundo.
                     </P>
                 </div>
             </div><br>
@@ -160,13 +173,7 @@ if (isset($_POST["nombre"]) && isset($_POST["telefono"]) && isset($_POST["asunto
     </footer>
 
 
-    <script>
-        window.onload = function () {
-            var contenedor = document.getElementById('contenedor_carga');
-            contenedor.style.visibility = 'hidden';
-            contenedor.style.opacity = '0';
-        };
-    </script>
+
     <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

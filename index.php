@@ -48,7 +48,7 @@ $producto = new CProducto();
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Categorias
+                            Categorías
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <?php echo $categoria->mostrarTodasCategorias() ?>
@@ -62,7 +62,7 @@ $producto = new CProducto();
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0" method="get" action="resultadoBusqueda.php">
-                    <input style="width: 270px;" class="form-control mr-sm-2" type="search" placeholder="Producto a buscar" name="busqueda">
+                    <input style="width: 270px;" class="form-control mr-sm-2" type="search" placeholder="Producto..." name="busqueda">
                     <input class="btn btn-outline-light my-2 my-sm-0" type="submit" value="Buscar">
                 </form>
             </div>
@@ -123,7 +123,7 @@ $producto = new CProducto();
                             <hr style="width: 50%">
                         </div>
                         <div class="col-md-4 col-12">
-                            <h1><strong>CATEGORIAS</strong></h1>
+                            <h1><strong>Nuestros Productos</strong></h1>
                         </div>
                         <div class="col-md-4 col-12">
                             <hr style="width: 50%">
@@ -131,7 +131,8 @@ $producto = new CProducto();
                     </div>
                     <br>
                     <div>
-                        <p style="font-size: 16px; width: 60%; margin-left: auto; margin-right: auto;">Conoce nuestra extensa gama de productos que estan pensadas para cualquier ocasión.</p>
+                        <p style="font-size: 18px; width: 60%; margin-left: auto; margin-right: auto;">Los diseños de nuestras colecciones quieren inspirarte.
+                                                                                                Descubre todas las prendas que puedes combinar para crear tus Looks esta temporada.</p>
                     </div>
                     
                     <hr>
@@ -167,7 +168,7 @@ $producto = new CProducto();
                 </div>
                 <br>
                 <div>
-                    <p style="font-size: 16px; width: 60%; margin-left: auto; margin-right: auto;">Los mejores artículos elegidos para tí que te haran lucir espectacular en todo momento.</p>
+                    <p style="font-size: 18px; width: 60%; margin-left: auto; margin-right: auto;">Los mejores artículos elegidos para tí que te haran lucir espectacular en todo momento.</p>
                 </div>
                 
                 <hr>
@@ -215,7 +216,7 @@ $producto = new CProducto();
                         <h1>NUESTRA MISIÓN</h1><br>
                         <P>
                             BELLA SULAMITA ofrece las últimas tendencias para mujeres, a unos precios más que atractivos. 
-                            El objetivo es ofrecer productos de calidad con estilo, a precios atractivos para todos los usuarios del mundo.
+                            El objetivo es ofrecer productos de calidad con estilo, para todos las personas del mundo.
                         </P>
                     </div>
                 </div><br>

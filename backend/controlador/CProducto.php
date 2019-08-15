@@ -173,6 +173,7 @@ class CProducto {
                             <th scope="row"><h5>$'.$product["precio"].'</h5></th>
                             <th scope="row"><h5>'.$product["marca"].'</h5></th>
                             <th scope="row"><h5>'.$product["color"].'</h5></th>
+                            <th scope="row"><h5>'.$product["description"].'</h5></th>
 						    <td><button type="button" class="btn btn-primary"><a href="editarProducto.php?id='.$product["id"].'"><i class="fa fa-edit"></i></a></button></td>
 						    <td><button type="button" class="btn btn-danger"><a href="eliminarProducto.php?id='.$product["id"].'"><i class="fa fa-trash"></i></a></button></td>
 						</tr>

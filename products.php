@@ -43,8 +43,10 @@ if(isset($_POST["filtro1"])){
             <div class="loader"></div> 
         </div>
         <button onclick="topFunction()" id="myBtn" title="Go to top">&uarr; volver</button>
+        
         <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #E7B5E3" id="navbar">
             <a class="navbar-brand" href="index.php" id="principal"><img src="multimedia/BellaSulamita.png"></a>
+            
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -53,13 +55,13 @@ if(isset($_POST["filtro1"])){
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Categorias
+                            Categorías
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <?php echo $categoria->mostrarTodasCategorias() ?>
                         </div>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="products.php">Nuestros Productos<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
@@ -67,7 +69,7 @@ if(isset($_POST["filtro1"])){
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0" method="get" action="resultadoBusqueda.php">
-                    <input style="width: 270px;" class="form-control mr-sm-2" type="search" placeholder="Elemento a buscar" name="busqueda">
+                    <input style="width: 270px;" class="form-control mr-sm-2" type="search" placeholder="Producto..." name="busqueda">
                     <input class="btn btn-outline-light my-2 my-sm-0" type="submit" value="Buscar">
                 </form>
             </div>
@@ -89,9 +91,9 @@ if(isset($_POST["filtro1"])){
                                         <b>Precio:</b>
                                         <form method="post" action="products.php"><br>
                                             Precio mínimo:
-                                            <input min="50" step="50" style="border-radius: 3px" type="number" name="precio1"><br>
+                                            <input min="50" step="50" style="border-radius: 3px" type="number" name="precio1" value="0"><br>
                                             Precio maximo:
-                                            <input min="50" step="50" style="border-radius: 3px" type="number" name="precio2"><br><br>
+                                            <input min="50" step="50" style="border-radius: 3px" type="number" name="precio2" value="200"><br><br>
                                             <input class="btn boton" type="submit" value="Buscar" name="filtro1">
                                         </form>
                                     </div>
@@ -186,7 +188,7 @@ if(isset($_POST["filtro1"])){
                         <h1>NUESTRA MISIÓN</h1><br>
                         <P>
                             BELLA SULAMITA ofrece las últimas tendencias para mujeres, a unos precios más que atractivos. 
-                            El objetivo es ofrecer productos de calidad con estilo, a precios atractivos para todos los usuarios del mundo.
+                            El objetivo es ofrecer productos de calidad con estilo, para todos las personas del mundo.
                         </P>
                     </div>
                 </div><br>

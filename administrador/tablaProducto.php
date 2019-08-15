@@ -106,6 +106,7 @@ if (!isset($_SESSION["autentificado"])) {
                                                 <th scope="col">Precio</th>
                                                 <th scope="col">Marca</th>
                                                 <th scope="col">Color</th>
+                                                <th scope="col">Descripción</th>
                                                 <th scope="col">Editar</th>
                                                 <th scope="col">Eliminar</th>
                                             </tr>

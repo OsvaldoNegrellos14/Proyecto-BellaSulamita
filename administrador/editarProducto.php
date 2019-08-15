@@ -148,7 +148,7 @@ if (isset($_POST["id"]) && isset($_POST["nombre"]) && isset($_POST["description"
                             </div>
                             <div class="col-lg-6 col-sm-12">
                                 <br><br><p style="margin-bottom: 5px;">Categorias:</p>
-                                <?php echo $categoria->mostrarCategoriasAdmin(); ?>
+                                <?php echo $categoria->mostrarCategoriasAdminA(); ?>
                                 <p style="margin-bottom: 5px;">Imagen actual:</p>
                                 <img src="../<?php echo $produ["imagen"] ?>"  width="auto" height="150px"><br>
                                 <input type="hidden" name="id" value="<?php echo $ide ?>">

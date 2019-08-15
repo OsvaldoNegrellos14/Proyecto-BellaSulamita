@@ -54,6 +54,16 @@ class CCategoria {
         }
         return $acu;
     }
+
+    public function mostrarCategoriasAdminA(){
+        $producto = $this->modelo->consultarCategoriasAdmin();
+        $acu = "";
+        foreach ($producto as $produ){
+            $acu .= '<input type="radio" name="categoria" id="'.$produ["categoria"].'" value="'.$produ["categoria"].'">
+                    <label for="'.$produ["categoria"].'">'.$produ["categoria"].'</label><br>';
+        }
+        return $acu;
+    }
         
     public function mostrarTodasCategorias() {
         $categoria = $this->modelo->consultarTodas();
