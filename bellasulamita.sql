@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 15-08-2019 a las 00:30:21
+-- Tiempo de generación: 19-08-2019 a las 01:41:31
 -- Versión del servidor: 5.7.24
 -- Versión de PHP: 7.2.19
 
@@ -21,7 +21,7 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `bellasulamita`
 --
-create database bellasulamita;
+
 -- --------------------------------------------------------
 
 --
@@ -152,11 +152,11 @@ INSERT INTO `productos` (`id`, `id_categoria`, `imagen`, `nombre`, `description`
 (39, 5, 'multimedia/sudadera4.jpg', 'Sudadera rosa estampado', 'Sudadera rosa estampado negro chasquido', 450, 'Noisy May', 'Rosa', 'Grande'),
 (40, 5, 'multimedia/sudadera5.jpg', 'Sudadera rosa lisa', 'Sudadera rosa con capucha estampado gato', 370, 'Noisy May', 'Rosa', 'Chica'),
 (41, 5, 'multimedia/sudadera6.jpg', 'Sudadera verde', 'Sudadera verde con capucha estampado Harry Potter', 449, 'Noisy May', 'Verde', 'Mediana'),
-(42, 6, 'multimedia/pantalones_formales2.jpg', 'Pantalon formal gris', 'Pantalon formal liso elegante gris', 219, 'Kookai', 'Gris', 'Chica'),
-(43, 6, 'multimedia/pantalones_formales3.jpg', 'Pantalon formal palatzzo', 'Pantalon formal tipo palatzoo elegante', 249, 'Only', 'Rojo y Negro', 'Grande'),
-(44, 6, 'multimedia/pantalones_formales4.jpg', 'Pantalon formal negro', 'Pantalon formal liso elegante negro', 239, 'Morgan', 'Negro', 'Mediana'),
-(45, 6, 'multimedia/pantalones_formales5.jpg', 'Pantalon formal rayado', 'Pantalon formal rayado elegante negro', 269, 'Morgan', 'Negro', 'Chica'),
-(46, 6, 'multimedia/pantalones_formales6.jpg', 'Pantalon formal rayado azul', 'Pantalon formal liso elegante rayado azul marino', 259, 'Morgan', 'Azul Marino', 'Mediana'),
+(42, 6, 'multimedia/pantalones_formales2.jpg', 'PantalÃ³n formal gris', 'PantalÃ³n formal liso elegante gris', 219, 'Kookai', 'Gris', 'Chica'),
+(43, 6, 'multimedia/pantalones_formales3.jpg', 'PantalÃ³n formal palatzzo', 'PantalÃ³n formal tipo palatzoo elegante', 249, 'Only', 'Rojo y Negro', 'Grande'),
+(44, 6, 'multimedia/pantalones_formales4.jpg', 'PantalÃ³n formal negro', 'PantalÃ³n formal liso elegante negro', 239, 'Morgan', 'Negro', 'Mediana'),
+(45, 6, 'multimedia/pantalones_formales5.jpg', 'PantalÃ³n formal rayado', 'PantalÃ³n formal rayado elegante negro', 269, 'Morgan', 'Negro', 'Chica'),
+(46, 6, 'multimedia/pantalones_formales6.jpg', 'PantalÃ³n formal rayado azul', 'PantalÃ³n formal liso elegante rayado azul marino', 259, 'Morgan', 'Azul Marino', 'Mediana'),
 (47, 7, 'multimedia/blusa1.jpg', 'Blusa roja estampado', 'Blusa roja con estampado elegante', 129, 'Pepe Jeans', 'Rojo', 'Mediana'),
 (48, 7, 'multimedia/blusa2.jpg', 'Blusa negra', 'Blusa negra rayada elegante', 149, 'Easy Wear', 'Negro', 'Mediana'),
 (49, 7, 'multimedia/blusa33.jpg', 'Blusa roja escote', 'Blusa roja con escote elegante sin mangas', 139, 'FÃ³rmula Joven', 'Rojo', 'Mediana'),
@@ -200,19 +200,21 @@ INSERT INTO `productos` (`id`, `id_categoria`, `imagen`, `nombre`, `description`
 (88, 5, 'multimedia/sudadera14.jpg', 'Sudadera Gato', 'Sudadera gris estampado gato', 869, 'Only', 'Gris', 'Chica'),
 (89, 5, 'multimedia/sudadera15.jpg', 'Sudadera Gato Orejas', 'Sudadera capucha orejas', 420, 'Brownie', 'Gris', 'Mediana'),
 (90, 5, 'multimedia/sudadera16.jpg', 'Sudadera Patitas', 'Sudadera estampado patitas', 350, 'Brownie', 'Gris y azul', 'Mediana'),
-(91, 6, 'multimedia/pantalon1.jpg', 'Pantalon casual', 'Pantalon casual mezclilla flores', 500, 'Kookai', 'Gris', 'Chica'),
-(92, 6, 'multimedia/pantalon2.jpg', 'Pantalon mezclilla', 'Pantalon casual basico', 400, 'Only', 'Azul', 'Mediana'),
-(93, 6, 'multimedia/pantalon3.jpg', 'Pantalon militar', 'Pantalon casula militar', 600, 'Morgan', 'Verde', 'Mediana'),
-(94, 6, 'multimedia/pantalon4.jpg', 'Pantalon Militar Clasico', 'Pantalon militar casual femenino', 890, 'Kookai', 'Verde', 'Chica'),
+(91, 6, 'multimedia/pantalon1.jpg', 'PantalÃ³n casual', 'PantalÃ³n casual mezclilla flores', 500, 'Kookai', 'Gris', 'Chica'),
+(92, 6, 'multimedia/pantalon2.jpg', 'PantalÃ³n mezclilla', 'PantalÃ³n casual bÃ¡sico', 400, 'Only', 'Azul', 'Mediana'),
+(93, 6, 'multimedia/pantalon3.jpg', 'PantalÃ³n militar', 'PantalÃ³n casual militar', 600, 'Morgan', 'Verde', 'Mediana'),
+(94, 6, 'multimedia/pantalon4.jpg', 'PantalÃ³n Militar ClÃ¡sico', 'PantalÃ³n militar casual femenino', 890, 'Kookai', 'Verde', 'Chica'),
 (95, 6, 'multimedia/pantalon5.jpg', 'Jean Deporte CS', 'Jean tipo deporte moderno', 100, 'Only', 'Gris', 'Grande'),
-(96, 6, 'multimedia/pantalon6.jpg', 'Pantalon Cotidiano', 'Pantalon informal moderno', 200, 'Morgan', 'Gris', 'Mediana'),
-(97, 6, 'multimedia/pantalon7.jpg', 'Pantalon Lunares', 'Pantalon con lunares blancos', 150, 'Only', 'Azul con puntos', 'Grande'),
+(96, 6, 'multimedia/pantalon6.jpg', 'PantalÃ³n Cotidiano', 'PantalÃ³n informal moderno', 200, 'Morgan', 'Gris', 'Mediana'),
+(97, 6, 'multimedia/pantalon7.jpg', 'PantalÃ³n Lunares', 'PantalÃ³n con lunares blancos', 150, 'Only', 'Azul con puntos', 'Grande'),
 (98, 7, 'multimedia/blusa10.jpg', 'Blusa roja simple', 'Blusa roja simple', 200, 'Pepe Jeans', 'Rojo', 'Mediana'),
-(99, 7, 'multimedia/blusa11.jpg', 'Blusa Jovenes', 'Blusa blanca juvenil 2019', 560, 'Easy Wear', 'Blanco', 'Mediana'),
+(99, 7, 'multimedia/blusa11.jpg', 'Blusa JÃ³venes', 'Blusa blanca juvenil 2019', 560, 'Easy Wear', 'Blanco', 'Mediana'),
 (100, 7, 'multimedia/blusa12.jpg', 'Blusa Rayada', 'Blusa rayada sin mangas', 300, 'FÃ³rmula Joven', 'Azul', 'Mediana'),
 (101, 7, 'multimedia/blusa13.jpg', 'Blusa Azul', 'Blusa azul para seÃ±ora', 459, 'Pepe Jeans', 'Azul', 'Mediana'),
-(102, 7, 'multimedia/blusa14.jpg', 'Blusa cuello', 'Blusa casual blanca jovenes', 479, 'Kookai', 'Blanco', 'Mediana'),
-(103, 7, 'multimedia/blusa15.jpg', 'Blusa Rosa 2019', 'Blusa Lisa con listones', 220, 'Pepe Jeans', 'Rosa', 'Mediana');
+(102, 7, 'multimedia/blusa14.jpg', 'Blusa cuello', 'Blusa casual blanca jÃ³venes', 479, 'Kookai', 'Blanco', 'Mediana'),
+(103, 7, 'multimedia/blusa15.jpg', 'Blusa Rosa 2019', 'Blusa Lisa con listones', 220, 'Pepe Jeans', 'Rosa', 'Mediana'),
+(106, 7, 'multimedia/f1.jpg', 'Vestido primavera japonÃ©s', 'jsjsj', 500, 'levi\'s', 'CafÃ©', 'Mediana'),
+(107, 7, 'multimedia/wallpaper-1925908.jpg', 'Blusa Azul', 'desc', 500, 'FÃ³rmula Joven', 'blanco', 'Mediana');
 
 -- --------------------------------------------------------
 
@@ -297,7 +299,7 @@ ALTER TABLE `formulario`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
 
 --
 -- AUTO_INCREMENT de la tabla `slider`

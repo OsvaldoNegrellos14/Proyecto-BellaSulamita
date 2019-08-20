@@ -59,7 +59,7 @@ class CCategoria {
         $producto = $this->modelo->consultarCategoriasAdmin();
         $acu = "";
         foreach ($producto as $produ){
-            $acu .= '<input type="radio" name="categoria" id="'.$produ["categoria"].'" value="'.$produ["categoria"].'">
+            $acu .= '<input type="radio" name="categoria" id="'.$produ["categoria"].'" value="'.$produ["id"].'">
                     <label for="'.$produ["categoria"].'">'.$produ["categoria"].'</label><br>';
         }
         return $acu;

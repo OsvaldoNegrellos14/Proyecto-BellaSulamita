@@ -6,6 +6,7 @@ include_once '../backend/controlador/CCategoria.php';
 include_once '../backend/controlador/CAdmin.php';
 $categoria = new CCategoria();
 session_start();
+error_reporting(0);
 if (!isset($_SESSION["autentificado"])) {
     header("Location: index.php");
 }

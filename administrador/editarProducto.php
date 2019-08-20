@@ -10,6 +10,7 @@ session_start();
 if (!isset($_SESSION["autentificado"])) {
     header("Location: index.php");
 }
+error_reporting(0);
 $ide = (int) $_GET["id"];
 $produ = $producto->mostrarProducto($ide);
 if (isset($_POST["id"]) && isset($_POST["nombre"]) && isset($_POST["description"]) && isset($_POST["precio"]) && isset($_POST["marca"]) && isset($_POST["color"]) && isset($_POST["talla"])) {
@@ -18,7 +19,14 @@ if (isset($_POST["id"]) && isset($_POST["nombre"]) && isset($_POST["description"
         copy($_FILES["imagen"]["tmp_name"], "../multimedia/".$_FILES["imagen"]["name"]);
         $imagen = "multimedia/".$_FILES["imagen"]["name"];
         $resultado = $producto->editarProducto($_POST["id"], $_POST["categoria"], $imagen, $_POST["nombre"], $_POST["description"], $_POST["precio"], $_POST["marca"], $_POST["color"], $_POST["talla"]);
-    } else {
+    } elseif(!empty($_FILES["imagen"]["tmp_name"])) {
+        unlink("../".$produ['imagen']);
+        copy($_FILES["imagen"]["tmp_name"], "../multimedia/".$_FILES["imagen"]["name"]);
+        $imagen = "multimedia/".$_FILES["imagen"]["name"];
+        $resultado = $producto->editarProducto($_POST["id"], $_POST["cat"], $imagen, $_POST["nombre"], $_POST["description"], $_POST["precio"], $_POST["marca"], $_POST["color"], $_POST["talla"]);
+    } elseif(!empty($_POST["categoria"])){
+        $resultado = $producto->editarProducto($_POST["id"], $_POST["categoria"], $_POST["multimedia"], $_POST["nombre"], $_POST["description"], $_POST["precio"], $_POST["marca"], $_POST["color"], $_POST["talla"]);
+    } else{
         $resultado = $producto->editarProducto($_POST["id"], $_POST["cat"], $_POST["multimedia"], $_POST["nombre"], $_POST["description"], $_POST["precio"], $_POST["marca"], $_POST["color"], $_POST["talla"]);
     }
 }

@@ -6,6 +6,7 @@ include_once '../backend/controlador/CAdmin.php';
 include_once '../backend/controlador/CContacto.php';
 $formulario = new CContacto();
 session_start();
+error_reporting(0);
 if (!isset($_SESSION["autentificado"])) {
     header("Location: index.php");
 }

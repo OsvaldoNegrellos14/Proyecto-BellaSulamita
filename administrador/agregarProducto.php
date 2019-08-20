@@ -6,6 +6,7 @@ include_once '../backend/controlador/CProducto.php';
 include_once '../backend/controlador/CCategoria.php';
 $producto = new CProducto();
 $categoria = new CCategoria();
+error_reporting(0);
 session_start();
 if (!isset($_SESSION["autentificado"])) {
     header("Location: index.php");

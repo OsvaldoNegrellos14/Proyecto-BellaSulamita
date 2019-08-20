@@ -5,6 +5,7 @@ include_once '../backend/controlador/CSlider.php';
 $slider = new CSlider();
 $ide = $_GET["id"];
 session_start();
+error_reporting(0);
 if (!isset($_SESSION["autentificado"])) {
     header("Location: index.php");
 }

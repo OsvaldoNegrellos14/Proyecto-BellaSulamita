@@ -4,6 +4,7 @@ include_once '../backend/modelo/MCategoria.php';
 include_once '../backend/controlador/CCategoria.php';
 $categoria = new CCategoria();
 session_start();
+error_reporting(0);
 if (!isset($_SESSION["autentificado"])) {
     header("Location: index.php");
 }

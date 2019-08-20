@@ -6,6 +6,7 @@ include_once '../backend/controlador/CSlider.php';
 include_once '../backend/controlador/CAdmin.php';
 $slider = new CSlider();
 session_start();
+error_reporting(0);
 if (!isset($_SESSION["autentificado"])) {
     header("Location: index.php");
 }

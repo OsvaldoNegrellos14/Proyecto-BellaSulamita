@@ -91,7 +91,7 @@ if(isset($_POST["filtro1"])){
                                         <b>Precio:</b>
                                         <form method="post" action="products.php"><br>
                                             Precio mínimo:
-                                            <input min="50" step="50" style="border-radius: 3px" type="number" name="precio1" value="0"><br>
+                                            <input min="50" step="50" style="border-radius: 3px" type="number" name="precio1" value="50"><br>
                                             Precio maximo:
                                             <input min="50" step="50" style="border-radius: 3px" type="number" name="precio2" value="200"><br><br>
                                             <input class="btn boton" type="submit" value="Buscar" name="filtro1">

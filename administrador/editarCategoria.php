@@ -7,6 +7,7 @@ session_start();
 if (!isset($_SESSION["autentificado"])) {
     header("Location: index.php");
 }
+error_reporting(0);
 $ide = (int) $_GET["id"];
 $cate = $categoria->mostrarCategoria($ide);
 if (isset($_POST["id"]) && isset($_POST["categoria"])) {

@@ -5,6 +5,7 @@ include_once '../backend/controlador/CProducto.php';
 $producto = new CProducto();
 $ide = $_GET["id"];
 session_start();
+error_reporting(0);
 if (!isset($_SESSION["autentificado"])) {
     header("Location: index.php");
 }

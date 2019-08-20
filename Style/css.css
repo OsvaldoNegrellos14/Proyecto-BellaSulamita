@@ -47,14 +47,6 @@ div ul li a{
     align-content: center;
 }
 
-.parallax{
-    background-image: url(../multimedia/parallax-1.jpg);
-    height: 200px;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 
 .linea hr{
     width: 100px;

@@ -3,6 +3,7 @@ include_once '../backend/modelo/BD.php';
 include_once '../backend/modelo/MAdmin.php';
 include_once '../backend/controlador/CAdmin.php';
 session_start();
+error_reporting(0);
 $admin = new CAdmin();
 if (isset($_POST["usuario"]) && isset($_POST["password"])) {
     $resultado = $admin->autentificar($_POST["usuario"], $_POST["password"]);
